@@ -10,16 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: da644b7275bb00f4b9e3807f4180b57c, type: 3}
-  m_Name: Laser Sword
+  m_Name: Cat
   m_EditorClassIdentifier: Assembly-CSharp::ItemSO
-  itemID: Laser Sword
-  itemName: "\uAD11\uC120\uAC80"
+  itemID: Cat
+  itemName: "\uACE0\uC591\uC774"
   icon: {fileID: 0}
-  description: 'I, am your
-
-    father.'
+  description: "\uAC89\uBCF4\uAE30\uC5D4 \uADC0\uC5FD\uC9C0\uB9CC \uC740\uADFC\uD788
+    \uAE4C\uCE60\uD558\uB2E4."
   cost: 5
-  recoveryType: 2
+  type: 2
   hungerAmount: 0
   thirstAmount: 0
   specialEvent: 0

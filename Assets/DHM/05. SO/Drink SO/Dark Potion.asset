@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: da644b7275bb00f4b9e3807f4180b57c, type: 3}
-  m_Name: Evian
+  m_Name: Dark Potion
   m_EditorClassIdentifier: Assembly-CSharp::ItemSO
-  itemID: Evian
-  itemName: "\uC5D0\uBE44\uC559"
+  itemID: DarkPotion
+  itemName: "\uAC80\uC740 \uBB3C\uC57D"
   icon: {fileID: 0}
-  description: "\uC5D0\uBE44\uC559\uC774 \uB9DB\uC788\uB2E4\uACE0\n\uD574\uBD10\uC57C
-    \uACA8\uC6B0 11~12\uBC30...\n"
+  description: "\uD568\uBD80\uB85C \uB9C8\uC168\uB2E4\uAC00 \uC548 \uC88B\uC740 \uC77C\uC774
+    \uC77C\uC5B4\uB0A0 \uAC83 \uAC19\uC544...\n"
   cost: 5
-  recoveryType: 1
+  type: 1
   hungerAmount: 0
-  thirstAmount: 3.5
-  specialEvent: 0
+  thirstAmount: 2.5
+  specialEvent: 2

@@ -10,15 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: da644b7275bb00f4b9e3807f4180b57c, type: 3}
-  m_Name: Cat
+  m_Name: Bad Apple
   m_EditorClassIdentifier: Assembly-CSharp::ItemSO
-  itemID: Cat
-  itemName: "\uACE0\uC591\uC774"
+  itemID: BadApple
+  itemName: "\uB098\uC05C \uC0AC\uACFC"
   icon: {fileID: 0}
-  description: "\uAC89\uBCF4\uAE30\uC5D4 \uADC0\uC5FD\uC9C0\uB9CC\n\uC740\uADFC\uD788
-    \uAE4C\uCE60\uD558\uB2E4."
+  description: 'Bad Apple!!
+
+    feat. nomico'
   cost: 5
-  recoveryType: 2
-  hungerAmount: 0
-  thirstAmount: 0
-  specialEvent: 0
+  type: 2
+  hungerAmount: 3
+  thirstAmount: 3
+  specialEvent: 1
