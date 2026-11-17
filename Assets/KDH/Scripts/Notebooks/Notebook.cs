@@ -2,14 +2,12 @@ using KDH.Scripts.Cameras;
 using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UIElements;
 
 namespace KDH.Scripts.Notebooks
 {
     public class Notebook : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         [field: SerializeField] public GameObject MonitorScreen { get; private set; }
-        [SerializeField] private GameObject background;
         [SerializeField] private CameraZoom cameraZoom;
         [SerializeField] private RoomViewController roomController;
 
@@ -21,7 +19,6 @@ namespace KDH.Scripts.Notebooks
             if (IsActive)
             {
                 MonitorScreen.SetActive(false);
-                background.SetActive(false);
             }
         }
 
@@ -39,7 +36,6 @@ namespace KDH.Scripts.Notebooks
                 if (MonitorScreen.activeSelf)
                 {
                     MonitorScreen.SetActive(false);
-                    background.SetActive(false);
                     await cameraZoom.CameraZoomOut();
                     roomController.Arrows.SetActive(true);
                 }
@@ -48,7 +44,6 @@ namespace KDH.Scripts.Notebooks
                     roomController.Arrows.SetActive(false);
                     await cameraZoom.CameraZoomIn();
                     MonitorScreen.SetActive(true);
-                    background.SetActive(true);
                 }
             }
             catch ( Exception exception)

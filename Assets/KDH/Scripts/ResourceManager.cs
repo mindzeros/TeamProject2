@@ -104,7 +104,7 @@ namespace KDH.Scripts
             // 내가 살 수 있는지 검사 해야 함.
             if (Credit < amount)
             {
-                _uiManager.PopupUI.SetUI("크레딧이 부족합니다.");
+                _uiManager.MessageUI.SetUI("크레딧이 부족합니다.");
                 return;
             }
             

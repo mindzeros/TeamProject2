@@ -38,7 +38,7 @@ namespace KDH.Scripts.Systems
         {
             if (!Survey.HasCompletedSurvey)
             {
-                UIManager.PopupUI.SetUI("자기 전 모든 설문조사에 응시해야 합니다.");
+                UIManager.MessageUI.SetUI("자기 전 모든 설문조사에 응시해야 합니다.");
                 return;
             }
             
