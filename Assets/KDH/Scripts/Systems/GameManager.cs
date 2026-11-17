@@ -29,6 +29,11 @@ namespace KDH.Scripts.Systems
             Survey.ResetTodaySurvey();
         }
 
+        private void Start()
+        {
+            MailObj.MailBoxController.MailMainText.SetText("아이템이 더 이상 없는 거 같다..");
+        }
+
         public void ContinueNextDay()
         {
             if (!Survey.HasCompletedSurvey)
