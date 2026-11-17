@@ -2340,7 +2340,7 @@ MonoBehaviour:
   - {fileID: 1081358667}
   - {fileID: 597136411}
   - {fileID: 1753062323}
-  arrows: {fileID: 1853194190}
+  <Arrows>k__BackingField: {fileID: 1853194190}
 --- !u!4 &421307255
 Transform:
   m_ObjectHideFlags: 0
@@ -9530,7 +9530,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::KDH.Scripts.Laptop.Laptop
   <MonitorScreen>k__BackingField: {fileID: 1115208612}
+  background: {fileID: 1628079936}
   cameraZoom: {fileID: 638242752}
+  roomController: {fileID: 421307254}
 --- !u!1 &1443083041
 GameObject:
   m_ObjectHideFlags: 0
