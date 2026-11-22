@@ -49,7 +49,7 @@ namespace KDH.Scripts.Surveies
                     surveys.Add(survey);
                 }
 
-                for (int i = 0; i < 3; i++) // NormalAnswer의 enum 종류가 3가지라 3번 반복
+                for (int i = 0; i < survey.normalAnswerReward.Length; i++) // NormalAnswer의 enum 종류가 3가지라 3번 반복
                 {
                     if (survey.normalAnswerReward[i].answer == _normalAnswers[i])
                     {

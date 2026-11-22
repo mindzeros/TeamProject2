@@ -44,3 +44,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21801d0311c38c349a9dd988dd5758c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SurveyQS_T_8
+  startCredit: 50

@@ -17,20 +17,18 @@ namespace KDH.Scripts.Surveies
 
         private void OnEnable()
         {
-            if (_mission == null)
+            _mission ??= survey.ExceptionSurveySpawnTrm.GetComponentInChildren<SurveyQS_T_2>();
+
+            if (_mission == null || _mission.IsCleared)
             {
-                _mission = survey.ExceptionSurveySpawnTrm.GetComponentInChildren<SurveyQS_T_2>();
+                return;
             }
 
-            if (_mission != null)
-            {
-                _mission.SetDictValue(_room);
-            }
+            _mission.SetDictValue(_room);
 
-            if (_mission != null && _mission.SpecialCondition())
+            if (_mission.TryClear())
             {
                 survey.InitSurveyQuiz();
-                return;
             }
         }
     }

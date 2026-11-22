@@ -10,7 +10,7 @@ namespace KDH.Scripts
     {
         [SerializeField] private UIManager _uiManager;
         
-        private int _credit = 100;
+        private int _credit;
 
         public int Credit
         {
@@ -35,6 +35,7 @@ namespace KDH.Scripts
         }
 
         public event Action<int> OnCreditChange;
+        public event Action OnItemBuy;
         public event Action<int> OnChangeLife;
 
         private readonly Dictionary<ItemSO, int> _itemDict = new();
@@ -109,6 +110,7 @@ namespace KDH.Scripts
             }
             
             Credit -= amount;
+            OnItemBuy?.Invoke();
         }
 
         public void SubstractLife(int amount)
