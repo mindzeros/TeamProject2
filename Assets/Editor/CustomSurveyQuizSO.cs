@@ -1,7 +1,6 @@
 using KDH.Scripts.Surveies;
 using UnityEditor;
 using UnityEngine;
-using static Codice.CM.Common.Serialization.Replication.BasePackageReader;
 
 [CustomEditor(typeof(SurveyQuizSO))]
 public class CustomSurveyQuizSO : Editor
@@ -12,8 +11,16 @@ public class CustomSurveyQuizSO : Editor
 
         var mainQuizText = serializedObject.FindProperty("mainQuizText"); // SO에 있는 값 가져오기
         var weirdQuizProperty = serializedObject.FindProperty("weirdQuiz"); // SO에 있는 값 가져와서 주소 저장
-        
+        var hasMission = serializedObject.FindProperty("hasMission");
+
         EditorGUILayout.PropertyField(mainQuizText);
+
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("hasMission"), new GUIContent("특수한 설문 입력 방식"));
+        if (hasMission.boolValue)
+        {
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("surveyMission"), new GUIContent("특수한 설문 입력 오브젝트"));
+        }
+
         EditorGUILayout.PropertyField(weirdQuizProperty); // 인스펙터에 그리기
 
         if (weirdQuizProperty.boolValue) // 가져왔던 데이터, bool

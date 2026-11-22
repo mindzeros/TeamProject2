@@ -1,4 +1,5 @@
 using Assets.KDH.Scripts.Surveies;
+using KDH.Scripts.Rooms;
 using KDH.Scripts.Systems;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,8 +9,10 @@ namespace KDH.Scripts.Surveies
     public class Survey : MonoBehaviour
     {
         [field: SerializeField] public SurveyUI SurveyUI { get; private set; }
-        [SerializeField] private GameManager _gameManager; 
-        
+        [field: SerializeField] public Room[] Rooms { get; private set; }
+        [field: SerializeField] public Transform ExceptionSurveySpawnTrm { get; private set; }
+        [SerializeField] private GameManager _gameManager;
+
         public bool HasCompletedSurvey { get; private set; }
         public bool IsDead { get; private set; } = false;
 
@@ -133,21 +136,27 @@ namespace KDH.Scripts.Surveies
             SurveyQuizSO surveyData = _gameManager.CurrentSurvey;
 
             SurveyUI.QuizText.SetText(surveyData.mainQuizText);
-            
-            if (surveyData.weirdQuiz) // 이상현상인 경우에는 모르겠음 버튼을 비활성화 시킴
+
+            SurveyUI.SetChooseBtn(surveyData.normalAnswerReward);
+            if (surveyData.hasMission)
             {
-                SurveyUI.IdkBtn.gameObject.SetActive(false);
-            }
-            else
-            {
-                SurveyUI.IdkBtn.gameObject.SetActive(true);
+                Instantiate(surveyData.surveyMission, ExceptionSurveySpawnTrm); 
             }
 
-            if (_gameManager.CurrentDay == 0) // 튜토리얼 설문조사인 경우에는 모르겠음 버튼과 아니오 버튼을 비활성화 시킴
-            {
-                SurveyUI.IdkBtn.gameObject.SetActive(false);
-                SurveyUI.NoBtn.gameObject.SetActive(false);
-            }
+            //if (surveyData.weirdQuiz) // 이상현상인 경우에는 모르겠음 버튼을 비활성화 시킴
+            //{
+            //    SurveyUI.IdkBtn.gameObject.SetActive(false);
+            //}
+            //else
+            //{
+            //    SurveyUI.IdkBtn.gameObject.SetActive(true);
+            //}
+
+            //if (_gameManager.CurrentDay == 0) // 튜토리얼 설문조사인 경우에는 모르겠음 버튼과 아니오 버튼을 비활성화 시킴
+            //{
+            //    SurveyUI.IdkBtn.gameObject.SetActive(false);
+            //    SurveyUI.NoBtn.gameObject.SetActive(false);
+            //}
 
             _currentSurveyIndex++;
         }

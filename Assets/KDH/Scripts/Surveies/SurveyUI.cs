@@ -76,5 +76,28 @@ namespace KDH.Scripts.Surveies
         {
             WorkApp.SetActive(isActive);
         }
+
+        public void SetChooseBtn(NormalReward[] answers)
+        {
+            YesBtn.gameObject.SetActive(false);
+            IdkBtn.gameObject.SetActive(false);
+            NoBtn.gameObject.SetActive(false);
+
+            foreach (var answer in answers)
+            {
+                if (answer.answer == NormalAnswer.Yes)
+                {
+                    YesBtn.gameObject.SetActive(true);
+                }
+                else if (answer.answer == NormalAnswer.Idk)
+                {
+                    IdkBtn.gameObject.SetActive(true);
+                }
+                else if (answer.answer == NormalAnswer.No)
+                {
+                    NoBtn.gameObject.SetActive(true);
+                }
+            }
+        }
     }
 }

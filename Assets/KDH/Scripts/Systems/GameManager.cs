@@ -8,6 +8,8 @@ namespace KDH.Scripts.Systems
 {
     public class GameManager : MonoBehaviour
     {
+        public static GameManager Instance;
+
         [Header("Settings")]
         public SurveyQuizSO CurrentSurvey { get; set; }
         public int CurrentDay { get; private set; }
@@ -26,6 +28,15 @@ namespace KDH.Scripts.Systems
 
         private void Awake()
         {
+            if (Instance == null)
+            {
+                Instance = this;
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
+
             Survey.ResetTodaySurvey();
         }
 

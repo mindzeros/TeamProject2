@@ -12,18 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18934e7e875cc9543ad6b49caf533b36, type: 3}
   m_Name: Tutorial 7
   m_EditorClassIdentifier: Assembly-CSharp::KDH.Scripts.Survey.SurveyQuizSO
-  level: 0
-  mainQuizText: "\uC55E\uC73C\uB85C 15\uC77C, 15\uC77C\uB3D9\uC548 \uC0DD\uC874\uD558\uC2E0\uB2E4\uBA74
-    \uC18C\uC0AC\uC774\uC5B4\uD2F0\uB294 \uADC0\uD558\uC758 \uAD6C\uCD9C\uC744 \uB3C4\uC6B8
-    \uC218 \uC788\uC2B5\uB2C8\uB2E4."
+  mainQuizText: "\uC5B4\uCA0C\uB4E0, \uD574\uB2F9 \uC124\uBB38\uC870\uC0AC\uC5D0
+    \uC131\uC2EC\uC131\uC758\uAECF \uB2F5\uBCC0\uD558\uC2E0\uB2E4\uBA74, \uADC0\uD558\uC758
+    \uC0C1\uC810\uC5D0 \uC77C\uC815\uB7C9\uC758 \uD06C\uB808\uB527\uC744 \uC81C\uACF5\uD560
+    \uAC83 \uC785\uB2C8\uB2E4."
   weirdQuiz: 0
+  weirdEventSO: {fileID: 0}
   normalAnswer: 0
   weirdAnswer: 0
   normalAnswerReward:
   - credit: 0
     answer: 0
-  - credit: 0
-    answer: 1
-  - credit: 0
-    answer: 2
-  weiredAnswerReward: []
+  isWeird: 0
+  damage: 0
