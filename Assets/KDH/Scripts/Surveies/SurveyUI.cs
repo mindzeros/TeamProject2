@@ -99,5 +99,24 @@ namespace KDH.Scripts.Surveies
                 }
             }
         }
+
+        public void SetChooseBtn(WeirdReward[] answers)
+        {
+            YesBtn.gameObject.SetActive(false);
+            IdkBtn.gameObject.SetActive(false);
+            NoBtn.gameObject.SetActive(false);
+
+            foreach (var answer in answers)
+            {
+                if (answer.answer == WeirdAnswer.Yes)
+                {
+                    YesBtn.gameObject.SetActive(true);
+                }
+                else if (answer.answer == WeirdAnswer.No)
+                {
+                    NoBtn.gameObject.SetActive(true);
+                }
+            }
+        }
     }
 }

@@ -1,18 +1,22 @@
-﻿using KDH.Scripts.WeirdEvents;
+﻿using KDH.Scripts.Rooms;
 using UnityEngine;
 
-namespace Assets.KDH.Scripts.WeirdEvents.Instances
+namespace KDH.Scripts.WeirdEvents
 {
     public class Test1WeirdEvent : AbstractWeirdEvent
     {
+        [SerializeField] private GameObject sumGaangePrefab;
+
+        private GameObject _sumGaangeObj;
+
         public override void OnStartEvent()
         {
-            Debug.Log("이벤트1 시작");
+            _sumGaangeObj = Instantiate(sumGaangePrefab, DoorRoom.SumGaangeTrm);
         }
 
         public override void OnEndEvent()
         {
-            Debug.Log("이벤트1 종료");
+            Destroy(_sumGaangeObj);
         }
     }
 }

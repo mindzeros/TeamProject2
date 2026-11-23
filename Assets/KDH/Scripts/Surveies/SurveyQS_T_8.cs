@@ -2,7 +2,7 @@ using KDH.Scripts.Surveies;
 using KDH.Scripts.Systems;
 using UnityEngine;
 
-public class SurveyQS_T_8 : AbstractSurveySpecialCondition
+public class SurveyQS_T_8 : AbstractSurveyMission
 {
     [SerializeField, Min(50)] private int startCredit;
 

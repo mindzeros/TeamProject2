@@ -2,6 +2,7 @@ using KDH.Scripts.Mails;
 using KDH.Scripts.Stores;
 using KDH.Scripts.Surveies;
 using KDH.Scripts.WeirdEvents;
+using System;
 using UnityEngine;
 
 namespace KDH.Scripts.Systems
@@ -25,6 +26,8 @@ namespace KDH.Scripts.Systems
         [field: SerializeField] public StoreUI StoreUI { get; private set; }
         [field: SerializeField] public Store Store { get; private set; }
         [field: SerializeField] public Mail MailObj { get; private set; }
+
+        public event Action OnDayChanged; // <= 자는 동안 발생한 것들 여기서 발행
 
         private void Awake()
         {
@@ -74,7 +77,19 @@ namespace KDH.Scripts.Systems
             if (Survey.IsDead)
             {
                 Debug.Log("이상현상이 있었는데 없다고 했습니다 사망.");
+
+                UIManager.NextDayFadeInOutUI.Fade(1f, 1f, 1.25f, $"사망", () =>
+                {
+                    AbstractWeirdEvent weirdEvent = WeirdEventManager.GetWeirdEventRandom(DailySurveyList[CurrentDay]);
+
+                    WeirdEventManager.EndEvents(weirdEvent);
+                    WeirdEventManager.StartEvents(weirdEvent);
+                    OnDayChanged?.Invoke();
+                }, Color.red);
+
+                return;
             }
+
 
             UIManager.NextDayFadeInOutUI.Fade(1f, 1f, 1.25f, $"{CurrentDay}일차", () =>
             {
@@ -82,7 +97,8 @@ namespace KDH.Scripts.Systems
 
                 WeirdEventManager.EndEvents(weirdEvent);
                 WeirdEventManager.StartEvents(weirdEvent);
-            });
+                OnDayChanged?.Invoke();
+            }, Color.white);
         }
     }
 }

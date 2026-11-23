@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace KDH.Scripts.Surveies
 {
-    public class SurveyQS_T_2 : AbstractSurveySpecialCondition
+    public class SurveyQS_T_2 : AbstractSurveyMission
     {
         private readonly Dictionary<Room, bool> roomDict = new();
         private Survey _parent;

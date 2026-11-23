@@ -1,7 +1,6 @@
-﻿using KDH.Scripts.WeirdEvents;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Assets.KDH.Scripts.WeirdEvents.Instances
+namespace KDH.Scripts.WeirdEvents
 {
     public class Test3WeirdEvent : AbstractWeirdEvent
     {

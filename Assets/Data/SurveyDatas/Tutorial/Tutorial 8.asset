@@ -16,11 +16,10 @@ MonoBehaviour:
     \uC0C1\uC810\uC5D0 \uB4E4\uC5B4\uAC00\uC11C \uBB3C\uC790\uB97C \uD558\uB098 \uAD6C\uB9E4\uD574\uBCF4\uC2DC\uBA74
     \uB418\uACA0\uC2B5\uB2C8\uB2E4."
   weirdQuiz: 0
-  weirdEventSO: {fileID: 0}
+  weirdEventSO: []
   surveyMission: {fileID: 8873931248200762999, guid: 280f2c9c49fb4164583ecebbc684c48e, type: 3}
   normalAnswer: 0
   weirdAnswer: 0
   normalAnswerReward: []
+  weirdAnswerReward: []
   hasMission: 1
-  isWeird: 0
-  damage: 0

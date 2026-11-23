@@ -14,7 +14,7 @@ namespace KDH.Scripts.UIs
             
         }
         
-        public void Fade(float fadeInTime, float fadeOutTime, float relateTime, string message, Action action)
+        public void Fade(float fadeInTime, float fadeOutTime, float relateTime, string message, Action action, Color color)
         {
             Sequence seq = DOTween.Sequence();
             
@@ -22,7 +22,8 @@ namespace KDH.Scripts.UIs
             _message.gameObject.SetActive(true);
             
             _message.SetText(message);
-            
+            _message.color = new Color(color.r, color.g, color.b, 0);
+
             seq.Append(_targetRect.DOFade(1, fadeInTime).SetEase(Ease.Linear));
             seq.Append(_message.DOFade(1, fadeInTime).SetEase(Ease.Linear));
             

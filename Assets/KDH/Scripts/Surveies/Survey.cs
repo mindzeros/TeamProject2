@@ -45,7 +45,7 @@ namespace KDH.Scripts.Surveies
             {
                 if (survey.weirdQuiz)
                 {
-                    weirdResult.Add(survey.isWeird);
+                    weirdResult.Add(survey.weirdQuiz);
                     surveys.Add(survey);
                 }
 
@@ -70,7 +70,7 @@ namespace KDH.Scripts.Surveies
 
                 if (suvey == true && !weirdResult[cnt])
                 {
-                    _gameManager.Resources.SubstractLife(surveys[cnt].damage);
+                    //_gameManager.Resources.SubstractLife(surveys[cnt].weirdAnswerReward[]);
                 }
                 else if (suvey == false && weirdResult[cnt])
                 {
@@ -114,7 +114,7 @@ namespace KDH.Scripts.Surveies
 
             ResetSurveyResult(); // 이전 설문 조사 내용 기록 삭제
         }
-        
+
         public void InitSurveyQuiz() // UI를 초기화 해주는 작업
         {
             if (_currentSurveyIndex >= _gameManager.TodaySurveies.list.Count || _gameManager.CurrentDay >= _gameManager.DailySurveyList.Length)
@@ -126,18 +126,26 @@ namespace KDH.Scripts.Surveies
                 SurveyUI.NoBtn.gameObject.SetActive(false);
                 return;
             }
-            
+
             if (!SurveyUI.YesBtn.gameObject.activeSelf)
                 SurveyUI.YesBtn.gameObject.SetActive(true);
             if (!SurveyUI.NoBtn.gameObject.activeSelf)
                 SurveyUI.NoBtn.gameObject.SetActive(true);
-            
+
             _gameManager.CurrentSurvey = _gameManager.TodaySurveies.list[_currentSurveyIndex];
             SurveyQuizSO surveyData = _gameManager.CurrentSurvey;
 
             SurveyUI.QuizText.SetText(surveyData.mainQuizText);
 
-            SurveyUI.SetChooseBtn(surveyData.normalAnswerReward);
+            if (!surveyData.weirdQuiz)
+            {
+                SurveyUI.SetChooseBtn(surveyData.normalAnswerReward);
+            }
+            else
+            {
+                SurveyUI.SetChooseBtn(surveyData.weirdAnswerReward);
+            }
+
             if (surveyData.hasMission)
             {
                 Instantiate(surveyData.surveyMission, ExceptionSurveySpawnTrm); 

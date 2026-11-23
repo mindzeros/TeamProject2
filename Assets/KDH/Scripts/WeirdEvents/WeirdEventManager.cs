@@ -20,9 +20,12 @@ namespace KDH.Scripts.WeirdEvents
 
             foreach (var weirdEvent in list.list)
             {
-                if (weirdEvent.weirdEventSO != null && weirdEvent.weirdQuiz) // 원래 weirdQuiz 이거 체크 안 하고 하면 SO에서 없을 때만 됨. (2026년 11월 10일)
+                if (weirdEvent.weirdEventSO != null)
                 {
-                    abstractWeirdEvents.Add(weirdEvent.weirdEventSO.GetComponent<AbstractWeirdEvent>());
+                    foreach (var entity in weirdEvent.weirdEventSO)
+                    {
+                        abstractWeirdEvents.Add(entity.GetComponent<AbstractWeirdEvent>());
+                    }
                 }
             }
 

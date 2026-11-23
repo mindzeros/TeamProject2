@@ -18,11 +18,12 @@ MonoBehaviour:
     \uB54C \uB2E4\uB77D\uBB38\uC744 \uD1B5\uD574 \uBC30\uC1A1\uB418\uC5B4 \uC788\uC744
     \uAC83\uC785\uB2C8\uB2E4."
   weirdQuiz: 0
-  weirdEventSO: {fileID: 0}
+  weirdEventSO: []
+  surveyMission: {fileID: 0}
   normalAnswer: 0
   weirdAnswer: 0
   normalAnswerReward:
   - credit: 0
     answer: 0
-  isWeird: 0
-  damage: 0
+  weirdAnswerReward: []
+  hasMission: 0

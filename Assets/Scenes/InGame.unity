@@ -11294,6 +11294,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1017602410}
   m_CullTransparentMesh: 1
+--- !u!1 &1030712328
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1030712329}
+  m_Layer: 5
+  m_Name: SumGaangeTrm
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1030712329
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1030712328}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -2.73, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1753062324}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1048327921
 GameObject:
   m_ObjectHideFlags: 0
@@ -17576,7 +17607,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1598569259}
   m_Layer: 0
-  m_Name: Survey Condition Spawn Point
+  m_Name: Survey Mission Spawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19329,7 +19360,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1753062324}
-  - component: {fileID: 1753062325}
+  - component: {fileID: 1753062327}
   - component: {fileID: 1753062326}
   m_Layer: 5
   m_Name: DoorView
@@ -19354,20 +19385,9 @@ Transform:
   - {fileID: 629023573}
   - {fileID: 1013487503}
   - {fileID: 604852017}
+  - {fileID: 1030712329}
   m_Father: {fileID: 1557277743}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1753062325
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1753062323}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 895f1527d4bedec42af0006def761ee5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Room
 --- !u!114 &1753062326
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19381,6 +19401,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::KDH.Scripts.Rooms.RoomSurveyMission
   survey: {fileID: 1807065020}
+--- !u!114 &1753062327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1753062323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00ea49030157f0743acf14d8f6628693, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KDH.Scripts.Rooms.DoorRoom
+  sumGaangeTrm: {fileID: 1030712329}
 --- !u!1 &1755263448
 GameObject:
   m_ObjectHideFlags: 0
@@ -20318,7 +20351,7 @@ MonoBehaviour:
   - {fileID: 627960266}
   - {fileID: 1081358669}
   - {fileID: 597136413}
-  - {fileID: 1753062325}
+  - {fileID: 1753062327}
   <ExceptionSurveySpawnTrm>k__BackingField: {fileID: 1598569259}
   _gameManager: {fileID: 1894248268}
 --- !u!4 &1807065021
@@ -21640,6 +21673,17 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 59f77e69fba1bcc4d85fbb9f1a988eeb, type: 2}
   - {fileID: 11400000, guid: 416d80040c29e0549948f7889bcf1482, type: 2}
   - {fileID: 11400000, guid: c4733b6cb250e174697506db680ace3e, type: 2}
+  - {fileID: 11400000, guid: 82bc13ca786fff94ba3d6d5c6a17fccb, type: 2}
+  - {fileID: 11400000, guid: d118265c50c8c994f85567aac5a37d15, type: 2}
+  - {fileID: 11400000, guid: b33f723af38859d4d8010a973ac6f48c, type: 2}
+  - {fileID: 11400000, guid: da5f5d7a4edbd15449eae70ef00b8a91, type: 2}
+  - {fileID: 11400000, guid: 92b39a030429d9d4cb18c878fe0fa823, type: 2}
+  - {fileID: 11400000, guid: 14b02a220779165459528eec57cee654, type: 2}
+  - {fileID: 11400000, guid: b2537491fdac29e46be6d343352b5e8c, type: 2}
+  - {fileID: 11400000, guid: 7ad2ddb9bc0063343a09250d973e7b8c, type: 2}
+  - {fileID: 11400000, guid: c56afc8804858ad45855a9f5ba6bb56f, type: 2}
+  - {fileID: 11400000, guid: bdd499adbbf674b448a65c5f8e3296a5, type: 2}
+  - {fileID: 11400000, guid: ab6f702622a364841a64fd45335df06a, type: 2}
   <WeirdEventManager>k__BackingField: {fileID: 648828934}
   <Resources>k__BackingField: {fileID: 787576293}
   <UIManager>k__BackingField: {fileID: 810207165}
