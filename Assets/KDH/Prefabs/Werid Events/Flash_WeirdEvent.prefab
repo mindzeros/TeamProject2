@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 390749275484713250}
   - component: {fileID: 1958216418037454164}
   m_Layer: 0
-  m_Name: Test1WeirdEvent
+  m_Name: Flash_WeirdEvent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,4 +44,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f989103d33f3c44ba5fdb7f9e5c196d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Assets.KDH.Scripts.WeirdEvents.Instances.TestWeirdEvent
-  sumGaangePrefab: {fileID: 6688356895643934229, guid: 46177aacd426d8648be1ad345b3c4882, type: 3}
+  sumGaangePrefab: {fileID: 3760868248734307411, guid: 46177aacd426d8648be1ad345b3c4882, type: 3}

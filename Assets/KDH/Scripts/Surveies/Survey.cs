@@ -1,4 +1,3 @@
-using Assets.KDH.Scripts.Surveies;
 using KDH.Scripts.Rooms;
 using KDH.Scripts.Systems;
 using System.Collections.Generic;
@@ -68,12 +67,13 @@ namespace KDH.Scripts.Surveies
                     return;
                 }
 
-                if (suvey == true && !weirdResult[cnt])
+                if (suvey == true && !weirdResult[cnt]) // 이상현상이 있다고 했는데 없을 때
                 {
-                    //_gameManager.Resources.SubstractLife(surveys[cnt].weirdAnswerReward[]);
-                }
-                else if (suvey == false && weirdResult[cnt])
+                    _gameManager.Resources.SubstractLife(surveys[cnt].weirdAnswerReward[1].damage); // weirdAnswerReward[1]은 이상현상 없을 떄의 데미지를 물어보는 거
+                }                                                                                   // 그냥 damage로 하면 되는 데 이미 구현해서 수정하기 귀찮네 ㅈㅈ
+                else if (suvey == false && weirdResult[cnt]) // 이상현상이 없다고 했는데 있을 때
                 {
+                    GameManager.Instance.UIManager.HealthText.ChangeHealthText(0);
                     IsDead = true;
                 }
 
@@ -150,21 +150,6 @@ namespace KDH.Scripts.Surveies
             {
                 Instantiate(surveyData.surveyMission, ExceptionSurveySpawnTrm); 
             }
-
-            //if (surveyData.weirdQuiz) // 이상현상인 경우에는 모르겠음 버튼을 비활성화 시킴
-            //{
-            //    SurveyUI.IdkBtn.gameObject.SetActive(false);
-            //}
-            //else
-            //{
-            //    SurveyUI.IdkBtn.gameObject.SetActive(true);
-            //}
-
-            //if (_gameManager.CurrentDay == 0) // 튜토리얼 설문조사인 경우에는 모르겠음 버튼과 아니오 버튼을 비활성화 시킴
-            //{
-            //    SurveyUI.IdkBtn.gameObject.SetActive(false);
-            //    SurveyUI.NoBtn.gameObject.SetActive(false);
-            //}
 
             _currentSurveyIndex++;
         }

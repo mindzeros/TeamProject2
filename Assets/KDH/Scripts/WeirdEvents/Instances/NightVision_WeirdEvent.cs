@@ -2,16 +2,16 @@
 
 namespace KDH.Scripts.WeirdEvents
 {
-    public class Test3WeirdEvent : AbstractWeirdEvent
+    internal class NightVision_WeirdEvent : AbstractWeirdEvent
     {
         public override void OnStartEvent()
         {
-            Debug.Log("이벤트3 시작");
+            Debug.Log("이벤트2 시작");
         }
 
         public override void OnEndEvent()
         {
-            Debug.Log("이벤트3 종료");
+            Debug.Log("이벤트2 종료");
         }
     }
 }

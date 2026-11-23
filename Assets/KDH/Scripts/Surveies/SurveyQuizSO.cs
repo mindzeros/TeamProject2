@@ -52,11 +52,12 @@ namespace KDH.Scripts.Surveies
         [Header("Werid survey")]
         public bool weirdQuiz;
         public GameObject[] weirdEventSO;
-        public GameObject surveyMission;
-        public NormalAnswer normalAnswer;
         public WeirdAnswer weirdAnswer;
-        public NormalReward[] normalAnswerReward;
         public WeirdReward[] weirdAnswerReward;
+
+        public NormalAnswer normalAnswer;
+        public NormalReward[] normalAnswerReward;
+        public GameObject surveyMission;
         public bool hasMission;
     }
 }

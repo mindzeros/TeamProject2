@@ -1,7 +1,6 @@
-﻿using KDH.Scripts.Surveies;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Assets.KDH.Scripts.Surveies
+namespace KDH.Scripts.Surveies
 {
     public class NormalSurveyTypeHandler : MonoBehaviour
     {

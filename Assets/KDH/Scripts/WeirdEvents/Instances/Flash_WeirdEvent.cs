@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace KDH.Scripts.WeirdEvents
 {
-    public class Test1WeirdEvent : AbstractWeirdEvent
+    internal class Flash_WeirdEvent : AbstractWeirdEvent
     {
         [SerializeField] private GameObject sumGaangePrefab;
 

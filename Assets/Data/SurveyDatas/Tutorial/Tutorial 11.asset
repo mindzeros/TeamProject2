@@ -15,11 +15,11 @@ MonoBehaviour:
   mainQuizText: "\uADC0\uD558\uC758 \uBB34\uC0AC\uC0DD\uD658\uC744 \uAE30\uC6D0\uD558\uACA0\uC2B5\uB2C8\uB2E4."
   weirdQuiz: 0
   weirdEventSO: []
-  surveyMission: {fileID: 0}
-  normalAnswer: 0
   weirdAnswer: 0
+  weirdAnswerReward: []
+  normalAnswer: 0
   normalAnswerReward:
   - credit: 0
     answer: 0
-  weirdAnswerReward: []
+  surveyMission: {fileID: 0}
   hasMission: 0

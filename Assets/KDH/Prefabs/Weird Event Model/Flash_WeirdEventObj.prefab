@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6688356895643934229
+--- !u!1 &3760868248734307411
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,22 +8,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1304231234216793974}
-  - component: {fileID: 7961459523128358445}
+  - component: {fileID: 3984895569216833531}
+  - component: {fileID: 8714538066314799474}
   m_Layer: 5
-  m_Name: SumGaange
+  m_Name: Flash_WeirdEventObj
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1304231234216793974
+--- !u!4 &3984895569216833531
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6688356895643934229}
+  m_GameObject: {fileID: 3760868248734307411}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -32,13 +32,13 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7961459523128358445
+--- !u!114 &8714538066314799474
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6688356895643934229}
+  m_GameObject: {fileID: 3760868248734307411}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
@@ -68,8 +68,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -0.013150036, y: -0.32249996, z: 0}
-    m_Extent: {x: 1.62655, y: 1.1233, z: 0}
+    m_Center: {x: -0.07105005, y: -1.8275001, z: 0}
+    m_Extent: {x: 3.4914498, y: 2.5561001, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -80,7 +80,8 @@ MonoBehaviour:
   m_ShapeLightFalloffSize: 1.07
   m_ShapeLightFalloffOffset: {x: 0, y: 0}
   m_ShapePath:
-  - {x: -0.5710012, y: -0.37503815, z: 0}
-  - {x: 0.5405723, y: -0.3571868, z: 0}
-  - {x: 0.54545456, y: -0.26999998, z: 0}
-  - {x: -0.56611854, y: -0.2878523, z: 0}
+  - {x: -2.4941108, y: -3.3127313, z: 0}
+  - {x: -0.007053651, y: -0.361125, z: 0}
+  - {x: 2.3514645, y: -2.3928156, z: 0}
+  - {x: 0.55034924, y: -0.34132504, z: 0}
+  - {x: -0.54152966, y: -0.37440515, z: 0}
