@@ -2540,6 +2540,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::KDH.Scripts.UI.NextDayFadeInOutUI
   _targetRect: {fileID: 1749528744}
+  roomViewController: {fileID: 421307254}
   _message: {fileID: 776609184}
 --- !u!1 &245201977
 GameObject:
@@ -4472,7 +4473,6 @@ GameObject:
   m_Component:
   - component: {fileID: 462455434}
   - component: {fileID: 462455436}
-  - component: {fileID: 462455435}
   m_Layer: 5
   m_Name: BedHotspot (1)
   m_TagString: Untagged
@@ -4499,45 +4499,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0.05, y: -0.25}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &462455435
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 462455433}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a8d3b5762cb3be43a47289b2ae3b936, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ClickHotspot
-  onClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 837855540}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 1501154183}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!61 &462455436
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -16779,7 +16740,7 @@ GameObject:
   - component: {fileID: 1501154186}
   - component: {fileID: 1501154185}
   m_Layer: 0
-  m_Name: Background (1)
+  m_Name: Bedding Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16856,7 +16817,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: bb1b7dd5c81d5284ba4ac4d3e0fe032b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -17319,7 +17280,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1566405401}
   - component: {fileID: 1566405403}
-  - component: {fileID: 1566405402}
+  - component: {fileID: 1566405404}
   m_Layer: 5
   m_Name: BedHotspot
   m_TagString: Untagged
@@ -17346,57 +17307,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0.05, y: -0.25}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1566405402
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1566405400}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a8d3b5762cb3be43a47289b2ae3b936, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ClickHotspot
-  onClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 837855540}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1501154183}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 1894248268}
-        m_TargetAssemblyTypeName: KDH.Scripts.Systems.GameManager, Assembly-CSharp
-        m_MethodName: ContinueNextDay
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
 --- !u!61 &1566405403
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -17443,6 +17353,35 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 13, y: 5}
   m_EdgeRadius: 0
+--- !u!114 &1566405404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1566405400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6dc12f027168ff428a6fef1e17668f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BedClickHotspot
+  onClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1894248268}
+        m_TargetAssemblyTypeName: KDH.Scripts.Systems.GameManager, Assembly-CSharp
+        m_MethodName: ContinueNextDay
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  blackground: {fileID: 837855540}
+  bedding: {fileID: 1501154183}
 --- !u!1 &1567622859
 GameObject:
   m_ObjectHideFlags: 0

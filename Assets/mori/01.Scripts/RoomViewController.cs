@@ -1,3 +1,4 @@
+using KDH.Scripts.Systems;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -31,6 +32,7 @@ public class RoomViewController : MonoBehaviour
     private void Move(int direction)
     {
         if (!IsMoveable || rooms.Count < 2) return;
+
         int nextIndex = (currentIndex + direction + rooms.Count) % rooms.Count;
         rooms[currentIndex].SetActive(false);
         currentIndex = nextIndex;

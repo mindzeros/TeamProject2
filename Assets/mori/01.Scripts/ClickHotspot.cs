@@ -4,9 +4,9 @@ using UnityEngine.EventSystems;
 
 public class ClickHotspot : MonoBehaviour, IPointerClickHandler
 {
-    [SerializeField] private UnityEvent onClick = new UnityEvent();
+    [SerializeField] protected UnityEvent onClick = new UnityEvent();
 
-    public void OnPointerClick(PointerEventData eventData)
+    public virtual void OnPointerClick(PointerEventData eventData)
     {
         if (eventData.button == PointerEventData.InputButton.Left)
         {

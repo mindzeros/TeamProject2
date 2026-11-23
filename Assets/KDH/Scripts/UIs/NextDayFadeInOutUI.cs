@@ -7,6 +7,7 @@ namespace KDH.Scripts.UIs
 {
     public class NextDayFadeInOutUI : FadeInOutUI
     {
+        [SerializeField] private RoomViewController roomViewController;
         [SerializeField] private TextMeshProUGUI _message;
 
         public override void Fade(float fadeInTime, float fadeOutTime, float relateTime)
@@ -17,7 +18,9 @@ namespace KDH.Scripts.UIs
         public void Fade(float fadeInTime, float fadeOutTime, float relateTime, string message, Action action, Color color)
         {
             Sequence seq = DOTween.Sequence();
-            
+
+            roomViewController.Arrows.SetActive(false);
+
             _targetRect.gameObject.SetActive(true);
             _message.gameObject.SetActive(true);
             
@@ -34,6 +37,7 @@ namespace KDH.Scripts.UIs
             seq.Append(_targetRect.DOFade(0, fadeOutTime).SetEase(Ease.Linear));
             seq.AppendCallback(() => _targetRect.gameObject.SetActive(false));
             seq.AppendCallback(() => _message.gameObject.SetActive(false));
+            seq.AppendCallback(() => roomViewController.Arrows.SetActive(true));
         }
     }
 }
