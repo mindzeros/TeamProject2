@@ -10,7 +10,7 @@ namespace KDH.Scripts
     {
         [SerializeField] private UIManager _uiManager;
         
-        private int _credit = 100;
+        private int _credit;
 
         public int Credit
         {
@@ -35,6 +35,7 @@ namespace KDH.Scripts
         }
 
         public event Action<int> OnCreditChange;
+        public event Action OnItemBuy;
         public event Action<int> OnChangeLife;
 
         private readonly Dictionary<ItemSO, int> _itemDict = new();
@@ -104,11 +105,12 @@ namespace KDH.Scripts
             // 내가 살 수 있는지 검사 해야 함.
             if (Credit < amount)
             {
-                _uiManager.PopupUI.SetUI("크레딧이 부족합니다.");
+                _uiManager.MessageUI.SetUI("크레딧이 부족합니다.");
                 return;
             }
             
             Credit -= amount;
+            OnItemBuy?.Invoke();
         }
 
         public void SubstractLife(int amount)

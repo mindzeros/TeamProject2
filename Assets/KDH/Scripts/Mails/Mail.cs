@@ -1,37 +1,29 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 namespace KDH.Scripts.Mails
 {
     public class Mail : MonoBehaviour
     {
         [SerializeField] private ResourceManager _resourceManager;
-        [SerializeField] private MailBoxController _mailBoxController;
+        [field: SerializeField] public MailBoxController MailBoxController { get; private set; }
         [SerializeField] private MiniItemUI _mailPrefab;
         [SerializeField] private Transform _contentTrm;
+        [SerializeField] private string nullItemText = "아이템이 더 이상 없는 거 같다..";
 
         private void Start()
         {
-            _mailBoxController.CollectBtn.onClick.AddListener(DestroyItems);
+            MailBoxController.CollectBtn.onClick.AddListener(DestroyItems);
 
-            if (_mailBoxController.TargetUI.activeSelf)
+            if (MailBoxController.TargetUI.activeSelf)
             {
-                _mailBoxController.HandleChangeActive();
-            }
-        }
-
-        private void Update()
-        {
-            if (Keyboard.current.tKey.wasPressedThisFrame)
-            {
-                _mailBoxController.HandleChangeActive();
+                MailBoxController.HandleChangeActive();
             }
         }
 
         private void OnDestroy()
         {
-            _mailBoxController.CollectBtn.onClick.RemoveAllListeners();
+            MailBoxController.CollectBtn.onClick.RemoveAllListeners();
         }
 
         public void InitItem(IReadOnlyDictionary<ItemSO, int> items)
@@ -43,7 +35,7 @@ namespace KDH.Scripts.Mails
                 miniItemUI.Count.SetText("x" + item.Value);
             }
 
-            _mailBoxController.MailMainText.SetText($"{_contentTrm.childCount}{_mailBoxController.Message}");
+            MailBoxController.MailMainText.SetText($"{_contentTrm.childCount}{MailBoxController.Message}");
         }
 
         public void DestroyItems()
@@ -58,7 +50,7 @@ namespace KDH.Scripts.Mails
                 _resourceManager.GetItem(item.Key, item.Value);
             }
 
-            _mailBoxController.MailMainText.SetText("아이템이 더 이상 없는 거 같다..");
+            MailBoxController.MailMainText.SetText(nullItemText);
             _resourceManager.ClearDeliveryDict();
         }
     }

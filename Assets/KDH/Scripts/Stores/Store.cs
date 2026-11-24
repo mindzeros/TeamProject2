@@ -9,8 +9,10 @@ namespace KDH.Scripts.Stores
         [Header("데이터")]
         [SerializeField] private List<ItemSO> _data;
         public HashSet<ItemSO> ItemDataSet { get; private set; }
+        [field: SerializeField] public List<StoreItem> StoreItems = new();
 
         [SerializeField] private ItemSOHandler[] _itemSoHandlers;
+
         private List<ItemSO> _currentList;
 
         private void Awake()

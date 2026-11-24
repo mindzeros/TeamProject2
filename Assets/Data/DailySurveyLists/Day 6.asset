@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ede65f299aea5b4aae255814e0fc5ac, type: 3}
+  m_Name: Day 6
+  m_EditorClassIdentifier: Assembly-CSharp::DailySurveyListSO
+  list:
+  - {fileID: 11400000, guid: 368620114095f7a428dc80eab1bab8bf, type: 2}
+  - {fileID: 11400000, guid: a3b58ad7c66a261418c3f455e85709bd, type: 2}
+  - {fileID: 11400000, guid: 113c7e403d14af94c90432ecc45f94fc, type: 2}
+  - {fileID: 11400000, guid: 9db73c4a84a45354fa105f36cee4cc6c, type: 2}
+  - {fileID: 11400000, guid: 9556e10b869eab54d8f726c1926cbccf, type: 2}
+  - {fileID: 11400000, guid: 57fcd05fd1a5eba408592f28f05d0d7e, type: 2}
+  - {fileID: 11400000, guid: 0b86b22e5e43c1b49b350dca4678c7cc, type: 2}
