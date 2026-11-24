@@ -6,6 +6,8 @@ namespace KDH.Scripts.Surveies
     [CreateAssetMenu(fileName = "DailySurveyList", menuName = "SO/KDH/DailySurveyList")]
     public class DailySurveyListSO : ScriptableObject
     {
+        public int damage;
+        public GameObject weridEvent;
         public List<SurveyQuizSO> list = new List<SurveyQuizSO>();
     }
 }

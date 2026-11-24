@@ -14,8 +14,7 @@ public class CustomSurveyQuizSO : Editor
         var hasMission = serializedObject.FindProperty("hasMission"); // HasMission
 
         EditorGUILayout.PropertyField(mainQuizText);
-
-        EditorGUILayout.PropertyField(serializedObject.FindProperty("weirdEventSO"), new GUIContent("Events"));
+        
         EditorGUILayout.PropertyField(serializedObject.FindProperty("hasMission"), new GUIContent("Has Survey Missions"));
         if (hasMission.boolValue)
         {

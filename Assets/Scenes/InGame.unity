@@ -1128,6 +1128,37 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!1 &110465639
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 110465640}
+  m_Layer: 0
+  m_Name: WeirdEventContainer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &110465640
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 110465639}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &116954955
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7376,50 +7407,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 640263220}
   m_CullTransparentMesh: 1
---- !u!1 &648828933
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 648828935}
-  - component: {fileID: 648828934}
-  m_Layer: 0
-  m_Name: WeirdEventManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &648828934
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 648828933}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8925bbae4ff9e047b80157ea04ba36f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::KDH.Scripts.WeirdEvents.WeirdEventManager
---- !u!4 &648828935
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 648828933}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &660267949
 GameObject:
   m_ObjectHideFlags: 0
@@ -8193,6 +8180,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::KDH.Scripts.ResourceManager
   _uiManager: {fileID: 810207165}
+  _life: 3
 --- !u!4 &787576294
 Transform:
   m_ObjectHideFlags: 0
@@ -15095,6 +15083,51 @@ RectTransform:
   m_AnchoredPosition: {x: 275, y: -362.5}
   m_SizeDelta: {x: 400, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1399133824
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1399133825}
+  - component: {fileID: 1399133826}
+  m_Layer: 0
+  m_Name: WeirdEventManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1399133825
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1399133824}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1399133826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1399133824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6d72ff43769575479c0cd6b45b7840f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KDH.Scripts.WeirdEvents.WeirdEventManager
+  <WeirdEventSpawner>k__BackingField: {fileID: 110465640}
 --- !u!1001 &1402405283
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16955,7 +16988,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uCCB4\uB825: 10"
+  m_text: "\uCCB4\uB825: 3"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 619b9e574c9da78438a3fba53b386f92, type: 2}
   m_sharedMaterial: {fileID: -7326673017190244334, guid: 619b9e574c9da78438a3fba53b386f92, type: 2}
@@ -21623,7 +21656,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c56afc8804858ad45855a9f5ba6bb56f, type: 2}
   - {fileID: 11400000, guid: bdd499adbbf674b448a65c5f8e3296a5, type: 2}
   - {fileID: 11400000, guid: ab6f702622a364841a64fd45335df06a, type: 2}
-  <WeirdEventManager>k__BackingField: {fileID: 648828934}
+  <WeirdEventManager>k__BackingField: {fileID: 1399133826}
   <Resources>k__BackingField: {fileID: 787576293}
   <UIManager>k__BackingField: {fileID: 810207165}
   <Survey>k__BackingField: {fileID: 1807065020}
@@ -25517,10 +25550,11 @@ SceneRoots:
   - {fileID: 1411423129}
   - {fileID: 525431334}
   - {fileID: 1807065021}
+  - {fileID: 110465640}
   - {fileID: 1894248269}
   - {fileID: 444534510}
   - {fileID: 153300187}
-  - {fileID: 648828935}
   - {fileID: 787576294}
+  - {fileID: 1399133825}
   - {fileID: 1146676682}
   - {fileID: 810207166}

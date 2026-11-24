@@ -15,16 +15,18 @@ MonoBehaviour:
   mainQuizText: "\uCDE8\uCE68 \uC911 \uBC29\uBB38\uC790\uAC00 \uC811\uADFC\uD558\uC9C0
     \uBABB\uD558\uB3C4\uB85D \uAE30\uC874 \uCC28\uB2E8 \uC124\uC815\uC744 \uC720\uC9C0\uD558\uC2DC\uACA0\uC2B5\uB2C8\uAE4C?"
   weirdQuiz: 0
-  weirdEventSO: []
-  surveyMission: {fileID: 0}
-  normalAnswer: 0
   weirdAnswer: 0
+  weirdAnswerReward: []
+  normalAnswer: 0
   normalAnswerReward:
   - credit: 20
     answer: 0
+    InvokeEvent: 0
   - credit: 0
     answer: 2
+    InvokeEvent: 1
   - credit: 10
     answer: 1
-  weirdAnswerReward: []
+    InvokeEvent: 0
+  surveyMission: {fileID: 0}
   hasMission: 0

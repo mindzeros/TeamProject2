@@ -13,42 +13,44 @@ namespace KDH.Scripts.Surveies
         [SerializeField] private GameManager _gameManager;
 
         public bool HasCompletedSurvey { get; private set; }
-        public bool IsDead { get; private set; } = false;
+        [field: SerializeField] public int WarningCount { get; private set; } = 0;
+        public bool IsDead { get; private set; }
 
-        private List<NormalAnswer> _normalAnswers = new();
-        private List<bool> _weirdAnswers = new();
+        private readonly List<NormalAnswer> _normalAnswers = new();
+        private readonly List<NormalReward> _normalReward = new();
+        public IReadOnlyList<NormalReward> NormalReward => _normalReward;
+
         private int _currentSurveyIndex;
+        private bool _myAnswer;
 
-        void Start()
+        private void Start()
         {
             SurveyUI.YesBtn.onClick.AddListener(InitSurveyQuiz);
             SurveyUI.IdkBtn.onClick.AddListener(InitSurveyQuiz);
             SurveyUI.NoBtn.onClick.AddListener(InitSurveyQuiz);
-            
+
             InitSurveyQuiz();
         }
 
         private void OnDestroy()
-        {   
+        {
             SurveyUI.YesBtn.onClick.RemoveAllListeners();
             SurveyUI.IdkBtn.onClick.RemoveAllListeners();
             SurveyUI.NoBtn.onClick.RemoveAllListeners();
         }
 
-        public void ResultSurvey(List<SurveyQuizSO> surveies)
+        public void ResultSurvey(List<SurveyQuizSO> surveys)
         {
-            List<SurveyQuizSO> surveys = new();
-            List<bool> weirdResult = new();
+            CalcurateMonney(surveys);
+            GetWarning();
+            GetDamage();
+        }
 
-            foreach (var survey in surveies)
+        private void CalcurateMonney(List<SurveyQuizSO> surveys)
+        {
+            foreach (var survey in surveys) // 돈 주기 부분
             {
-                if (survey.weirdQuiz)
-                {
-                    weirdResult.Add(survey.weirdQuiz);
-                    surveys.Add(survey);
-                }
-
-                for (int i = 0; i < survey.normalAnswerReward.Length; i++) // NormalAnswer의 enum 종류가 3가지라 3번 반복
+                for (int i = 0; i < survey.normalAnswerReward.Length; i++)
                 {
                     if (survey.normalAnswerReward[i].answer == _normalAnswers[i])
                     {
@@ -57,51 +59,114 @@ namespace KDH.Scripts.Surveies
                     }
                 }
             }
+        }
 
-            int cnt = 0;
-
-            foreach (bool suvey in _weirdAnswers)
+        public void ResetWarning()
+        {
+            if (_gameManager.CurrentDay != 0 && _gameManager.CurrentDay % 3 == 0)
             {
-                if (_weirdAnswers.Count == 0 || weirdResult.Count == 0)
-                {
-                    return;
-                }
-
-                if (suvey == true && !weirdResult[cnt]) // 이상현상이 있다고 했는데 없을 때
-                {
-                    _gameManager.Resources.SubstractLife(surveys[cnt].weirdAnswerReward[1].damage); // weirdAnswerReward[1]은 이상현상 없을 떄의 데미지를 물어보는 거
-                }                                                                                   // 그냥 damage로 하면 되는 데 이미 구현해서 수정하기 귀찮네 ㅈㅈ
-                else if (suvey == false && weirdResult[cnt]) // 이상현상이 없다고 했는데 있을 때
-                {
-                    GameManager.Instance.UIManager.HealthText.ChangeHealthText(0);
-                    IsDead = true;
-                }
-
-                cnt++;
+#if UNITY_EDITOR
+                Debug.Log("경고 초기화");
+# endif
+                WarningCount = 0;
             }
         }
 
-        public void GetNormalSuveyResult(NormalSurveyTypeHandler type) // UnityEvent 직렬화
+        private void GetWarning()
         {
-            _normalAnswers.Add(type.NormalAnswer);
+            int warningCount = 0;
+
+            foreach (var answer in _normalAnswers)
+            {
+                if (answer == NormalAnswer.Idk)
+                {
+                    warningCount++;
+                }
+            }
+
+            if (warningCount >= 4)
+            {
+#if UNITY_EDITOR
+                Debug.Log("경고 먹음, 모르겠음을 선택한 횟수: " + warningCount);
+# endif
+                WarningCount++;
+            }
+
+            if (WarningCount != 0 && WarningCount % 2 == 0)
+            {
+                _gameManager.Resources.SubstractLife(1);
+#if UNITY_EDITOR
+                Debug.Log("경고가 2번 쌓여서 데미지 줌");
+# endif
+            }
         }
 
-        public void GetWeridSurveyResult(bool value) // UnityEvent 직렬화
+        private void GetDamage()
         {
-            if (_gameManager.CurrentSurvey.weirdQuiz)
-                _weirdAnswers.Add(value);
+            // 데미지 부분
+            bool surveyAnswer = _gameManager.WeirdEventManager.HasWeirdEvent;
+            bool playerAnswer = _myAnswer;
+
+            if (playerAnswer == true && surveyAnswer == false)
+            {
+# if UNITY_EDITOR
+                Debug.Log("있다고 했는데 없음");
+# endif
+                _gameManager.Resources.SubstractLife(_gameManager.DailySurveyList[_gameManager.CurrentDay].damage);
+            }
+            else if (playerAnswer == false && surveyAnswer == true)
+            {
+# if UNITY_EDITOR
+                Debug.Log("없다고 헀는데 있음");
+# endif
+                IsDead = true;
+                GameManager.Instance.UIManager.HealthText.ChangeHealthText(0);
+            }
+
+            if (_gameManager.Resources.Life <= 0)
+            {
+# if UNITY_EDITOR
+                Debug.Log("기회를 모두 소진하여 사망");
+# endif
+                IsDead = true;
+            }
+        }
+
+
+        public void GetNormalSuveyResult(NormalSurveyTypeHandler type)
+        {
+            _normalAnswers.Add(type.NormalAnswer);
+
+            foreach (var result in GameManager.Instance.CurrentSurvey.normalAnswerReward)
+            {
+                if (result.answer == type.NormalAnswer)
+                    _normalReward.Add(result);
+            }
+        }
+
+        // UnityEvent에서 호출
+        public void GetWeridSurveyResult(bool value)
+        {
+            SurveyQuizSO currentSurvey = _gameManager.CurrentSurvey;
+            if (currentSurvey == null || !currentSurvey.weirdQuiz)
+                return;
+
+            _myAnswer = value;
         }
 
         private void ResetSurveyResult()
         {
             _normalAnswers.Clear();
-            _weirdAnswers.Clear();
+        }
+
+        public void ResetNormalRewardResult()
+        {
+            _normalReward.Clear();
         }
 
         public void ResetTodaySurvey()
         {
             HasCompletedSurvey = false;
-            
             _currentSurveyIndex = 0;
 
             if (_gameManager.CurrentDay >= _gameManager.DailySurveyList.Length)
@@ -111,13 +176,13 @@ namespace KDH.Scripts.Surveies
             }
 
             _gameManager.TodaySurveies = _gameManager.DailySurveyList[_gameManager.CurrentDay];
-
-            ResetSurveyResult(); // 이전 설문 조사 내용 기록 삭제
+            ResetSurveyResult();
         }
 
-        public void InitSurveyQuiz() // UI를 초기화 해주는 작업
+        public void InitSurveyQuiz()
         {
-            if (_currentSurveyIndex >= _gameManager.TodaySurveies.list.Count || _gameManager.CurrentDay >= _gameManager.DailySurveyList.Length)
+            if (_currentSurveyIndex >= _gameManager.TodaySurveies.list.Count ||
+                _gameManager.CurrentDay >= _gameManager.DailySurveyList.Length)
             {
                 HasCompletedSurvey = true;
                 SurveyUI.QuizText.SetText("모든 설문을 조사함");
@@ -138,18 +203,12 @@ namespace KDH.Scripts.Surveies
             SurveyUI.QuizText.SetText(surveyData.mainQuizText);
 
             if (!surveyData.weirdQuiz)
-            {
                 SurveyUI.SetChooseBtn(surveyData.normalAnswerReward);
-            }
             else
-            {
                 SurveyUI.SetChooseBtn(surveyData.weirdAnswerReward);
-            }
 
             if (surveyData.hasMission)
-            {
-                Instantiate(surveyData.surveyMission, ExceptionSurveySpawnTrm); 
-            }
+                Instantiate(surveyData.surveyMission, ExceptionSurveySpawnTrm);
 
             _currentSurveyIndex++;
         }

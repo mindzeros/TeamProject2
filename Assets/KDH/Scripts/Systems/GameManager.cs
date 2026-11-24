@@ -48,21 +48,21 @@ namespace KDH.Scripts.Systems
             MailObj.MailBoxController.MailMainText.SetText("아이템이 더 이상 없는 거 같다..");
         }
 
-        public void ContinueNextDay()
+        public void ContinueNextDay() // onClick 이벤트로 연결, Ai한테 이상현상 호출에 대해 물오봄
         {
             if (!Survey.HasCompletedSurvey)
             {
                 UIManager.MessageUI.SetUI("자기 전 모든 설문조사에 응시해야 합니다.");
                 return;
             }
-            
 
+            Survey.ResetWarning();
             Survey.ResultSurvey(TodaySurveies.list);
             CurrentDay++;
 
-#if UNITY_EDITOR
+            #if UNITY_EDITOR
             Debug.Log($"현재 {CurrentDay}일차");
-#endif
+            #endif
 
             foreach (var d in Resources.DeliveryItemDict)
             {
@@ -70,20 +70,16 @@ namespace KDH.Scripts.Systems
             }
 
             MailObj.InitItem(Resources.DeliveryItemDict);
+            Resources.ClearDeliveryDict();
             Survey.ResetTodaySurvey();
             Survey.InitSurveyQuiz();
             Store.ResetItems();
 
             if (Survey.IsDead)
             {
-                Debug.Log("이상현상이 있었는데 없다고 했습니다 사망.");
-
                 UIManager.NextDayFadeInOutUI.Fade(1f, 1f, 1.25f, $"사망", () =>
                 {
-                    AbstractWeirdEvent weirdEvent = WeirdEventManager.GetWeirdEventRandom(DailySurveyList[CurrentDay]);
-
-                    WeirdEventManager.EndEvents(weirdEvent);
-                    WeirdEventManager.StartEvents(weirdEvent);
+                    ResetAndInvokeWeirdEvent();
                     OnDayChanged?.Invoke();
                 }, Color.red);
 
@@ -93,12 +89,40 @@ namespace KDH.Scripts.Systems
 
             UIManager.NextDayFadeInOutUI.Fade(1f, 1f, 1.25f, $"{CurrentDay}일차", () =>
             {
-                AbstractWeirdEvent weirdEvent = WeirdEventManager.GetWeirdEventRandom(DailySurveyList[CurrentDay]);
-
-                WeirdEventManager.EndEvents(weirdEvent);
-                WeirdEventManager.StartEvents(weirdEvent);
+                ResetAndInvokeWeirdEvent();
                 OnDayChanged?.Invoke();
             }, Color.white);
+        }
+
+        private void ResetAndInvokeWeirdEvent()
+        {
+            foreach (var result in Survey.NormalReward)
+            {
+                if (result.InvokeEvent)
+                {
+                    if (!result.InvokeEvent)
+                    {
+                        continue;
+                    }
+
+                    if (CurrentDay < 0 || CurrentDay >= DailySurveyList.Length)
+                    {
+                        break;
+                    }
+
+                    WeirdEventManager.HasWeirdEvent = true;
+                    WeirdEventManager.ReplaceAndStartEvent(DailySurveyList[CurrentDay].weridEvent);
+                
+                    break;
+                }
+                else
+                {
+                    WeirdEventManager.HasWeirdEvent = false;
+                    WeirdEventManager.EndEvents();
+                }
+            }
+
+            Survey.ResetNormalRewardResult();
         }
     }
 }
