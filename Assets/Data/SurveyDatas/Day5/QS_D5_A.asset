@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18934e7e875cc9543ad6b49caf533b36, type: 3}
+  m_Name: QS_D5_A
+  m_EditorClassIdentifier: Assembly-CSharp::KDH.Scripts.Survey.SurveyQuizSO
+  mainQuizText: "\uADC0\uD558\uAED8\uC120, \uC624\uB298 \uC774\uC0C1\uD604\uC0C1\uC744
+    \uBC1C\uACAC\uD558\uC168\uC2B5\uB2C8\uAE4C?"
+  weirdQuiz: 1
+  weirdEventSO: []
+  surveyMission: {fileID: 0}
+  normalAnswer: 0
+  weirdAnswer: 0
+  normalAnswerReward: []
+  weirdAnswerReward:
+  - damage: 0
+    answer: 0
+  - damage: 0
+    answer: 1
+  hasMission: 0

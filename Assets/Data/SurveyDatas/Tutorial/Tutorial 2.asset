@@ -12,17 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18934e7e875cc9543ad6b49caf533b36, type: 3}
   m_Name: Tutorial 2
   m_EditorClassIdentifier: Assembly-CSharp::KDH.Scripts.Survey.SurveyQuizSO
-  level: 0
-  mainQuizText: "\uC800\uD76C\uB294 \uADC0\uD558\uC758 \uC548\uC804\uC744 \uBCF4\uC7A5\uD558\uB294
-    \uC18C\uC0AC\uC774\uC5B4\uD2F0\uC785\uB2C8\uB2E4."
+  mainQuizText: "\uC6B0\uC120, \uBC29\uC744 \uC880 \uB458\uB7EC\uBCF4\uC2DC\uACA0\uC2B5\uB2C8\uAE4C?"
   weirdQuiz: 0
+  weirdEventSO: []
+  surveyMission: {fileID: 8203199114633328676, guid: 0fca8b3649877b84da7a718ab518fed7, type: 3}
   normalAnswer: 0
   weirdAnswer: 0
-  normalAnswerReward:
-  - credit: 0
-    answer: 0
-  - credit: 0
-    answer: 1
-  - credit: 0
-    answer: 2
-  weiredAnswerReward: []
+  normalAnswerReward: []
+  weirdAnswerReward: []
+  hasMission: 1

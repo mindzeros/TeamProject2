@@ -12,18 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18934e7e875cc9543ad6b49caf533b36, type: 3}
   m_Name: Tutorial 6
   m_EditorClassIdentifier: Assembly-CSharp::KDH.Scripts.Survey.SurveyQuizSO
-  level: 0
-  mainQuizText: "\uD06C\uB808\uB527\uC73C\uB85C\uB294 \uC0DD\uC874\uC5D0 \uD544\uC694\uD55C
-    \uBB3C\uD488\uB4E4\uC744 \uC778\uD130\uB137 \uC0C1\uC810\uC5D0\uC11C \uAD6C\uB9E4\uD560
-    \uC218 \uC788\uC2B5\uB2C8\uB2E4."
+  mainQuizText: "\uC544, \uAC71\uC815\uC740 \uD558\uC9C0 \uB9C8\uC2DC\uAE38 \uBC14\uB78D\uB2C8\uB2E4.
+    \uADC0\uD558\uC758 \uC0AC\uC0DD\uD65C\uC744 \uD30C\uACE0\uB4E4 \uC0DD\uAC01\uC740
+    \uC5C6\uC73C\uB2C8\uAE4C\uC694."
   weirdQuiz: 0
+  weirdEventSO: []
+  surveyMission: {fileID: 0}
   normalAnswer: 0
   weirdAnswer: 0
   normalAnswerReward:
   - credit: 0
     answer: 0
-  - credit: 0
-    answer: 1
-  - credit: 0
-    answer: 2
-  weiredAnswerReward: []
+  weirdAnswerReward: []
+  hasMission: 0

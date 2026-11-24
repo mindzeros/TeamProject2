@@ -18,11 +18,27 @@ namespace KDH.Scripts.Surveies
         No
     }
 
+    public interface IReward
+    {
+        int AnswerIndex { get; }
+    }
+
     [Serializable]
-    public struct NormalReward
+    public struct NormalReward : IReward
     {
         public int credit;
         public NormalAnswer answer;
+
+        public int AnswerIndex => credit;
+    }
+
+    [Serializable]
+    public struct WeirdReward : IReward
+    {
+        public int damage;
+        public WeirdAnswer answer;
+
+        public int AnswerIndex => damage;
     }
 
     #endregion
@@ -30,17 +46,18 @@ namespace KDH.Scripts.Surveies
     [CreateAssetMenu(fileName = "SurveyQuizData", menuName = "SO/KDH/SurveyQuizData", order = 0)]
     public class SurveyQuizSO : ScriptableObject
     {
-        
-        [Header("설정")][TextArea]
+        [Header("Setting")][TextArea]
         public string mainQuizText;
         
-        [Header("이상현상 문제인가요?")]
+        [Header("Werid survey")]
         public bool weirdQuiz;
-        public GameObject weirdEventSO;
-        public NormalAnswer normalAnswer;
+        public GameObject[] weirdEventSO;
         public WeirdAnswer weirdAnswer;
+        public WeirdReward[] weirdAnswerReward;
+
+        public NormalAnswer normalAnswer;
         public NormalReward[] normalAnswerReward;
-        public bool isWeird;
-        public int damage;
+        public GameObject surveyMission;
+        public bool hasMission;
     }
 }

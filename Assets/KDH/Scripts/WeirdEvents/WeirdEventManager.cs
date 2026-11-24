@@ -22,7 +22,10 @@ namespace KDH.Scripts.WeirdEvents
             {
                 if (weirdEvent.weirdEventSO != null)
                 {
-                    abstractWeirdEvents.Add(weirdEvent.weirdEventSO.GetComponent<AbstractWeirdEvent>());
+                    foreach (var entity in weirdEvent.weirdEventSO)
+                    {
+                        abstractWeirdEvents.Add(entity.GetComponent<AbstractWeirdEvent>());
+                    }
                 }
             }
 

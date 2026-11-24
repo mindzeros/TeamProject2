@@ -1,4 +1,4 @@
-using Assets.KDH.Scripts.Surveies;
+using KDH.Scripts.Rooms;
 using KDH.Scripts.Systems;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,8 +8,10 @@ namespace KDH.Scripts.Surveies
     public class Survey : MonoBehaviour
     {
         [field: SerializeField] public SurveyUI SurveyUI { get; private set; }
-        [SerializeField] private GameManager _gameManager; 
-        
+        [field: SerializeField] public Room[] Rooms { get; private set; }
+        [field: SerializeField] public Transform ExceptionSurveySpawnTrm { get; private set; }
+        [SerializeField] private GameManager _gameManager;
+
         public bool HasCompletedSurvey { get; private set; }
         public bool IsDead { get; private set; } = false;
 
@@ -42,15 +44,15 @@ namespace KDH.Scripts.Surveies
             {
                 if (survey.weirdQuiz)
                 {
-                    weirdResult.Add(survey.isWeird);
+                    weirdResult.Add(survey.weirdQuiz);
                     surveys.Add(survey);
                 }
 
-                for (int i = 0; i < 3; i++) // NormalAnswer의 enum 종류가 3가지라 3번 반복
+                for (int i = 0; i < survey.normalAnswerReward.Length; i++) // NormalAnswer의 enum 종류가 3가지라 3번 반복
                 {
                     if (survey.normalAnswerReward[i].answer == _normalAnswers[i])
                     {
-                        _gameManager.ResourceManager.GetCredit(survey.normalAnswerReward[i].credit);
+                        _gameManager.Resources.GetCredit(survey.normalAnswerReward[i].credit);
                         break;
                     }
                 }
@@ -65,12 +67,13 @@ namespace KDH.Scripts.Surveies
                     return;
                 }
 
-                if (suvey == true && !weirdResult[cnt])
+                if (suvey == true && !weirdResult[cnt]) // 이상현상이 있다고 했는데 없을 때
                 {
-                    _gameManager.ResourceManager.SubstractLife(surveys[cnt].damage);
-                }
-                else if (suvey == false && weirdResult[cnt])
+                    _gameManager.Resources.SubstractLife(surveys[cnt].weirdAnswerReward[1].damage); // weirdAnswerReward[1]은 이상현상 없을 떄의 데미지를 물어보는 거
+                }                                                                                   // 그냥 damage로 하면 되는 데 이미 구현해서 수정하기 귀찮네 ㅈㅈ
+                else if (suvey == false && weirdResult[cnt]) // 이상현상이 없다고 했는데 있을 때
                 {
+                    GameManager.Instance.UIManager.HealthText.ChangeHealthText(0);
                     IsDead = true;
                 }
 
@@ -111,7 +114,7 @@ namespace KDH.Scripts.Surveies
 
             ResetSurveyResult(); // 이전 설문 조사 내용 기록 삭제
         }
-        
+
         public void InitSurveyQuiz() // UI를 초기화 해주는 작업
         {
             if (_currentSurveyIndex >= _gameManager.TodaySurveies.list.Count || _gameManager.CurrentDay >= _gameManager.DailySurveyList.Length)
@@ -123,30 +126,29 @@ namespace KDH.Scripts.Surveies
                 SurveyUI.NoBtn.gameObject.SetActive(false);
                 return;
             }
-            
+
             if (!SurveyUI.YesBtn.gameObject.activeSelf)
                 SurveyUI.YesBtn.gameObject.SetActive(true);
             if (!SurveyUI.NoBtn.gameObject.activeSelf)
                 SurveyUI.NoBtn.gameObject.SetActive(true);
-            
+
             _gameManager.CurrentSurvey = _gameManager.TodaySurveies.list[_currentSurveyIndex];
             SurveyQuizSO surveyData = _gameManager.CurrentSurvey;
 
             SurveyUI.QuizText.SetText(surveyData.mainQuizText);
-            
-            if (surveyData.weirdQuiz) // 이상현상인 경우에는 모르겠음 버튼을 비활성화 시킴
+
+            if (!surveyData.weirdQuiz)
             {
-                SurveyUI.IdkBtn.gameObject.SetActive(false);
+                SurveyUI.SetChooseBtn(surveyData.normalAnswerReward);
             }
             else
             {
-                SurveyUI.IdkBtn.gameObject.SetActive(true);
+                SurveyUI.SetChooseBtn(surveyData.weirdAnswerReward);
             }
 
-            if (_gameManager.CurrentDay == 0) // 튜토리얼 설문조사인 경우에는 모르겠음 버튼과 아니오 버튼을 비활성화 시킴
+            if (surveyData.hasMission)
             {
-                SurveyUI.IdkBtn.gameObject.SetActive(false);
-                SurveyUI.NoBtn.gameObject.SetActive(false);
+                Instantiate(surveyData.surveyMission, ExceptionSurveySpawnTrm); 
             }
 
             _currentSurveyIndex++;

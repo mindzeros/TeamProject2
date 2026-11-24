@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: Day 3
   m_EditorClassIdentifier: Assembly-CSharp::DailySurveyListSO
   list:
-  - {fileID: 11400000, guid: 6cd5c1aac99f94d4eb2974bd159beb13, type: 2}
-  - {fileID: 11400000, guid: daa343eb130a7f440ac90b1076c1efe0, type: 2}
-  - {fileID: 11400000, guid: 4ad0ac44e15dc5249b9d0b5916f41733, type: 2}
-  - {fileID: 11400000, guid: ee7a078b6c0a88d4d933928c3e701ced, type: 2}
+  - {fileID: 11400000, guid: 67949c3680b9dc14488da6cba88a680c, type: 2}
+  - {fileID: 11400000, guid: 87d60dc9c5cb29147b268117d91df6af, type: 2}
+  - {fileID: 11400000, guid: 7009235aeca78ca40bacae8b852ac628, type: 2}
+  - {fileID: 11400000, guid: 19dc687bd937fbc4e8a56d4e4960c262, type: 2}
+  - {fileID: 11400000, guid: 3efd4e754f0c04c4a963cfe07903a7df, type: 2}
+  - {fileID: 11400000, guid: 2b6b67b996d8ef847b110223ed253c4e, type: 2}

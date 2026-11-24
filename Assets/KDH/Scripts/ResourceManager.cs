@@ -10,7 +10,7 @@ namespace KDH.Scripts
     {
         [SerializeField] private UIManager _uiManager;
         
-        private int _credit = 100;
+        private int _credit;
 
         public int Credit
         {
@@ -35,9 +35,13 @@ namespace KDH.Scripts
         }
 
         public event Action<int> OnCreditChange;
+        public event Action OnItemBuy;
         public event Action<int> OnChangeLife;
 
         private readonly Dictionary<ItemSO, int> _itemDict = new();
+        private readonly Dictionary<ItemSO, int> _mailItemDict = new();
+        private readonly Dictionary<ItemSO, int> _delieryItemDict = new();
+        public IReadOnlyDictionary<ItemSO, int> DeliveryItemDict => _delieryItemDict;
 
         private void Start()
         {
@@ -48,16 +52,16 @@ namespace KDH.Scripts
             OnChangeLife?.Invoke(Life);
         }
 
+#if UNITY_EDITOR
         private void Update()
         {
-# if UNITY_EDITOR
-            if (Keyboard.current.tKey.wasPressedThisFrame)
+            if (Keyboard.current.yKey.wasPressedThisFrame)
             {
                 foreach (var i in _itemDict)
                     Debug.Log(i.Key.itemName + ": " + i.Value);
             }
-# endif
         }
+# endif
         
         private void OnDestroy()
         {
@@ -65,7 +69,24 @@ namespace KDH.Scripts
             OnChangeLife -= _uiManager.HealthText.ChangeHealthText;
         }
 
-        public void GetItem(ItemSO item, int count)
+        public void AddDeliveryItem(ItemSO item, int count) // 주문
+        {
+            if (_delieryItemDict.TryGetValue(item, out int currentValue))
+            {
+                _delieryItemDict[item] = currentValue + count;
+            }
+            else
+            {
+                _delieryItemDict[item] = 1;
+            }
+        }
+
+        public void AddMailItem(ItemSO item, int count) // 우편함에 아이템 넣기
+        {
+            _mailItemDict.TryAdd(item, count);
+        }
+
+        public void GetItem(ItemSO item, int count) // 즉시 아이템을 획득
         {
             _itemDict.TryAdd(item, count);
         }
@@ -84,16 +105,22 @@ namespace KDH.Scripts
             // 내가 살 수 있는지 검사 해야 함.
             if (Credit < amount)
             {
-                _uiManager.PopupUI.SetUI("크레딧이 부족합니다.");
+                _uiManager.MessageUI.SetUI("크레딧이 부족합니다.");
                 return;
             }
             
             Credit -= amount;
+            OnItemBuy?.Invoke();
         }
 
         public void SubstractLife(int amount)
         {
             Life -= amount;
+        }
+
+        public void ClearDeliveryDict()
+        {
+            _delieryItemDict.Clear();
         }
     }
 }

@@ -1,3 +1,4 @@
+using KDH.Scripts.Systems;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -5,10 +6,10 @@ using UnityEngine.InputSystem;
 public class RoomViewController : MonoBehaviour
 {
     [SerializeField] private List<GameObject> rooms = new();
-    [SerializeField] private GameObject arrows;
+    [field: SerializeField] public GameObject Arrows { get; private set; }
     
     private int currentIndex = 0;
-    private bool isMoveable = true;
+    public bool IsMoveable { get; private set; } = true;
 
     private void Start()
     {
@@ -16,13 +17,13 @@ public class RoomViewController : MonoBehaviour
         {
             rooms[i].SetActive(i == currentIndex);
         }
-        arrows.SetActive(isMoveable && rooms.Count > 1);
+        Arrows.SetActive(IsMoveable && rooms.Count > 1);
     }
 
     public void SetMoveable(bool isMoveable)
     {
-        this.isMoveable = isMoveable;
-        arrows.SetActive(isMoveable && rooms.Count > 1);
+        this.IsMoveable = isMoveable;
+        Arrows.SetActive(isMoveable && rooms.Count > 1);
     }
 
     public void MoveLeft() => Move(-1);
@@ -30,7 +31,8 @@ public class RoomViewController : MonoBehaviour
     
     private void Move(int direction)
     {
-        if (!isMoveable || rooms.Count < 2) return;
+        if (!IsMoveable || rooms.Count < 2) return;
+
         int nextIndex = (currentIndex + direction + rooms.Count) % rooms.Count;
         rooms[currentIndex].SetActive(false);
         currentIndex = nextIndex;
@@ -39,12 +41,17 @@ public class RoomViewController : MonoBehaviour
 
     private void Update()
     {
-        if (Keyboard.current.aKey.wasPressedThisFrame && isMoveable)
+        if (!Arrows.activeSelf)
+        {
+            return;
+        }
+
+        if (Keyboard.current.aKey.wasPressedThisFrame && IsMoveable)
         {
             MoveLeft();
         }
 
-        if (Keyboard.current.dKey.wasPressedThisFrame && isMoveable)
+        if (Keyboard.current.dKey.wasPressedThisFrame && IsMoveable)
         {
             MoveRight();
         }
