@@ -1,58 +1,60 @@
-using KDH.Scripts.Surveies;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace KDH.Scripts.WeirdEvents
 {
     public class WeirdEventManager : MonoBehaviour
     {
-        public AbstractWeirdEvent AbstractWeird { get; private set; }
+        public AbstractWeirdEvent AbstractWeirdEvent { get; private set; }
 
-        public AbstractWeirdEvent GetWeirdEventRandom(DailySurveyListSO list)
+        [field: SerializeField] public Transform WeirdEventSpawner { get; private set; }
+
+        public bool HasWeirdEvent { get; set; }
+
+        private void StartEvents()
         {
-            if (list == null)
+            if (AbstractWeirdEvent == null)
             {
-                Debug.Log("WeirdManager에 값이 없음");
-                return null;
-            }
-
-            List<AbstractWeirdEvent> abstractWeirdEvents = new();
-
-            foreach (var weirdEvent in list.list)
-            {
-                if (weirdEvent.weirdEventSO != null)
-                {
-                    foreach (var entity in weirdEvent.weirdEventSO)
-                    {
-                        abstractWeirdEvents.Add(entity.GetComponent<AbstractWeirdEvent>());
-                    }
-                }
-            }
-
-            int index = Random.Range(0, abstractWeirdEvents.Count);
-
-            return abstractWeirdEvents.Count != 0 ? abstractWeirdEvents[index] : null;
-        }
-
-        public void StartEvents(AbstractWeirdEvent weirdEvent)
-        {
-            if (weirdEvent == null)
-            {   
                 return;
             }
 
-            AbstractWeird = weirdEvent;
-            weirdEvent.OnStartEvent();
+            AbstractWeirdEvent.OnStartEvent();
         }
 
-        public void EndEvents(AbstractWeirdEvent weirdEvent)
+        public void EndEvents()
         {
-            if (weirdEvent == null)
+            if (AbstractWeirdEvent == null)
             {
-               return;
+                return;
             }
 
-            weirdEvent.OnEndEvent();
+            var currentWeirdEvent = AbstractWeirdEvent;
+            AbstractWeirdEvent = null;
+
+            currentWeirdEvent.OnEndEvent();
+            Destroy(currentWeirdEvent.gameObject);
+        }
+
+        public void ReplaceAndStartEvent(GameObject prefab)
+        {
+            EndEvents();    
+
+            if (AbstractWeirdEvent != null) // 2차 방어선
+            {
+                Destroy(AbstractWeirdEvent.gameObject);
+            }
+
+            if (prefab == null)
+            {
+                AbstractWeirdEvent = null; // 없을 때는 하지말기 (초반에는 없음)
+                return;
+            }
+
+            GameObject instance = Instantiate(prefab, WeirdEventSpawner);
+            AbstractWeirdEvent = instance.GetComponent<AbstractWeirdEvent>();
+
+            Debug.Log("설문 이름:" + AbstractWeirdEvent);
+
+            StartEvents();
         }
     }
 }

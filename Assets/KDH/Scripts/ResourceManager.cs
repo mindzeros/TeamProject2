@@ -22,7 +22,7 @@ namespace KDH.Scripts
             }
         }
 
-        private int _life = 10;
+        [SerializeField] private int _life = 3;
 
         public int Life
         {

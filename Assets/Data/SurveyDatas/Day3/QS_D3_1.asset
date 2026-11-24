@@ -14,16 +14,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::KDH.Scripts.Survey.SurveyQuizSO
   mainQuizText: "\uADF8\uB3D9\uC548 \uC7A0\uC790\uB9AC\uB294 \uD3B8\uC548\uD558\uC168\uC2B5\uB2C8\uAE4C?"
   weirdQuiz: 0
-  weirdEventSO: []
-  surveyMission: {fileID: 0}
-  normalAnswer: 0
   weirdAnswer: 0
+  weirdAnswerReward: []
+  normalAnswer: 0
   normalAnswerReward:
   - credit: 30
     answer: 0
+    InvokeEvent: 0
   - credit: 20
     answer: 2
+    InvokeEvent: 0
   - credit: 10
     answer: 1
-  weirdAnswerReward: []
+    InvokeEvent: 0
+  surveyMission: {fileID: 0}
   hasMission: 0

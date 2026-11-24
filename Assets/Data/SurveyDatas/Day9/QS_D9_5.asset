@@ -16,16 +16,18 @@ MonoBehaviour:
     \uC778\uC6D0\uC744 \uC0C8\uB85C \uB4F1\uB85D\uD558\uB824\uB294 \uC694\uCCAD\uC744
     \uAC70\uBD80\uD558\uC2DC\uACA0\uC2B5\uB2C8\uAE4C?"
   weirdQuiz: 0
-  weirdEventSO: []
-  surveyMission: {fileID: 0}
-  normalAnswer: 0
   weirdAnswer: 0
+  weirdAnswerReward: []
+  normalAnswer: 0
   normalAnswerReward:
   - credit: 20
     answer: 0
+    InvokeEvent: 0
   - credit: 0
     answer: 2
+    InvokeEvent: 1
   - credit: 10
     answer: 1
-  weirdAnswerReward: []
+    InvokeEvent: 0
+  surveyMission: {fileID: 0}
   hasMission: 0

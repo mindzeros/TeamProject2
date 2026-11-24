@@ -18,27 +18,18 @@ namespace KDH.Scripts.Surveies
         No
     }
 
-    public interface IReward
-    {
-        int AnswerIndex { get; }
-    }
-
     [Serializable]
-    public struct NormalReward : IReward
+    public struct NormalReward
     {
         public int credit;
         public NormalAnswer answer;
-
-        public int AnswerIndex => credit;
+        public bool InvokeEvent;
     }
 
     [Serializable]
-    public struct WeirdReward : IReward
+    public struct WeirdReward
     {
-        public int damage;
         public WeirdAnswer answer;
-
-        public int AnswerIndex => damage;
     }
 
     #endregion
@@ -51,7 +42,6 @@ namespace KDH.Scripts.Surveies
         
         [Header("Werid survey")]
         public bool weirdQuiz;
-        public GameObject[] weirdEventSO;
         public WeirdAnswer weirdAnswer;
         public WeirdReward[] weirdAnswerReward;
 

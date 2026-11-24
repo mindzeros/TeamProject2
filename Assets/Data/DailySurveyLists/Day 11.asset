@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ede65f299aea5b4aae255814e0fc5ac, type: 3}
   m_Name: Day 11
   m_EditorClassIdentifier: Assembly-CSharp::DailySurveyListSO
+  damage: 1
+  weridEvent: {fileID: 0}
   list:
   - {fileID: 11400000, guid: 6be2a4d68961118428aac2f6027cc93f, type: 2}
   - {fileID: 11400000, guid: 1098cea5cf9ce734784b603dd4da17a1, type: 2}
