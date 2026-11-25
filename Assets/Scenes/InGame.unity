@@ -21085,6 +21085,7 @@ GameObject:
   - component: {fileID: 1868264566}
   - component: {fileID: 1868264568}
   - component: {fileID: 1868264567}
+  - component: {fileID: 1868264569}
   m_Layer: 6
   m_Name: WorldTimer
   m_TagString: Untagged
@@ -21131,7 +21132,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC624\uC804 8:51\n2026-10-28"
+  m_text: "\uC624\uC804 8:00\n2024-04-01"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 619b9e574c9da78438a3fba53b386f92, type: 2}
   m_sharedMaterial: {fileID: -7326673017190244334, guid: 619b9e574c9da78438a3fba53b386f92, type: 2}
@@ -21211,6 +21212,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1868264565}
   m_CullTransparentMesh: 1
+--- !u!114 &1868264569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1868264565}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff999292d729820468495bc6b99df0db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NotebookClock
+  gameManager: {fileID: 1894248268}
+  clockText: {fileID: 1868264567}
 --- !u!1 &1870102679 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2740636706831762988, guid: 9f27a42d04049cb4f8fc5f30a674f462, type: 3}
