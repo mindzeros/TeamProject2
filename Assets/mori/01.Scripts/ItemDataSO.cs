@@ -3,9 +3,7 @@ using UnityEngine;
 public enum ItemType
 {
     Food,
-    Drink,
-    Tool,
-    Misc
+    Drink
 }
 
 [CreateAssetMenu(fileName = "ItemDataSO", menuName = "Scriptable Objects/ItemDataSO")]
@@ -22,7 +20,6 @@ public class ItemDataSO : ScriptableObject
     [Header("Consumable Stats")]
     public float hunger;
     public float thirst;
-    public int uses;
 
     [Header("Visual")]
     public Sprite itemIcon;

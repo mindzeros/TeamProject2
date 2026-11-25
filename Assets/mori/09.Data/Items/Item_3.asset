@@ -19,5 +19,4 @@ MonoBehaviour:
   itemType: 0
   hunger: 3
   thirst: 0
-  uses: 1
   itemIcon: {fileID: 0}

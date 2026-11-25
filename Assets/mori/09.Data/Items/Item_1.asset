@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemDataSO
   itemID: 1
   itemName: "\uD1B5\uC870\uB9BC"
-  itemDescription: "\uD14C\uC2A4\uD2B8"
+  itemDescription: "\uC7AC\uB09C\uC601\uD654\uC5D0\uC11C \uC790\uC8FC \uBCF4\uB358
+    \uC74C\uC2DD\uC774\uB2E4"
   price: 30
   itemType: 0
   hunger: 1.5
   thirst: 0
-  uses: 1
   itemIcon: {fileID: 0}

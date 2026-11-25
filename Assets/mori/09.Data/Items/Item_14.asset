@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e32389d9105e64b44b5dee647eb64021, type: 3}
-  m_Name: Item_50
+  m_Name: Item_14
   m_EditorClassIdentifier: Assembly-CSharp::ItemDataSO
-  itemID: 50
-  itemName: "\uAC74\uC804\uC9C0"
-  itemDescription: "AA\uD0C0\uC785 \uAC74\uC804\uC9C0 \uB450\uAC1C"
-  price: 50
-  itemType: 3
+  itemID: 14
+  itemName: "\uBCF4\uB9AC\uCC28"
+  itemDescription: "\uD76C\uBBF8\uD558\uAC8C \uAD6C\uC218\uD55C \uD5A5\uC774 \uB098\uB294
+    \uAC08\uC0C9 \uBB3C\uC774\uB2E4"
+  price: 30
+  itemType: 1
   hunger: 0
-  thirst: 0
-  uses: 2
+  thirst: 1
   itemIcon: {fileID: 0}

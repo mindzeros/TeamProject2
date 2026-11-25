@@ -15,7 +15,7 @@ public static class ItemCSVParser
     private const string OutputPath = DataFolder + "/Items";
 
     private static readonly string[] Headers =
-        { "id", "name", "info", "price", "hunger", "thirst", "uses", "type" };
+        { "id", "name", "info", "price", "hunger", "thirst", "type" };
 
     [MenuItem("Tools/Items/Sync CSV")]
     public static void Import()
@@ -36,7 +36,7 @@ public static class ItemCSVParser
             return;
 
         var items = new List<(int id, string name, string info, int price,
-            float hunger, float thirst, int uses, ItemType type)>();
+            float hunger, float thirst, ItemType type)>();
         var ids = new HashSet<int>();
         var culture = CultureInfo.InvariantCulture;
         const NumberStyles decimalStyle = NumberStyles.Float | NumberStyles.AllowThousands;
@@ -53,22 +53,19 @@ public static class ItemCSVParser
                 !int.TryParse(row[3], NumberStyles.Integer, culture, out int price) ||
                 !float.TryParse(row[4], decimalStyle, culture, out float hunger) ||
                 !float.TryParse(row[5], decimalStyle, culture, out float thirst) ||
-                !int.TryParse(row[6], NumberStyles.Integer, culture, out int uses) ||
                 !ids.Add(id))
                 return;
 
-            ItemType? type = row[7].ToLowerInvariant() switch
+            ItemType? type = row[6].ToLowerInvariant() switch
             {
                 "food" => ItemType.Food,
                 "drink" => ItemType.Drink,
-                "tool" => ItemType.Tool,
-                "misc" => ItemType.Misc,
                 _ => null
             };
             if (!type.HasValue)
                 return;
 
-            items.Add((id, row[1], row[2], price, hunger, thirst, uses, type.Value));
+            items.Add((id, row[1], row[2], price, hunger, thirst, type.Value));
         }
 
         if (!AssetDatabase.IsValidFolder(OutputPath))
@@ -91,7 +88,6 @@ public static class ItemCSVParser
             item.price = row.price;
             item.hunger = row.hunger;
             item.thirst = row.thirst;
-            item.uses = row.uses;
             item.itemType = row.type;
 
             if (isNew)
