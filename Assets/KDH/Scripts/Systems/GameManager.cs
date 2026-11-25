@@ -13,7 +13,7 @@ namespace KDH.Scripts.Systems
 
         [Header("Settings")]
         public SurveyQuizSO CurrentSurvey { get; set; }
-        public int CurrentDay { get; private set; }
+        [field: SerializeField] public int CurrentDay { get; private set; }
 
         [Header("Data")]
         [field: SerializeField] public DailySurveyListSO[] DailySurveyList { get; private set; }

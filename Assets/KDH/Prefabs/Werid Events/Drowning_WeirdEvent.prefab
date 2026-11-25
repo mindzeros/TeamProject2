@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 390749275484713250}
   - component: {fileID: -3374859485000607475}
   m_Layer: 0
-  m_Name: WaterNotFlow_WeirdEvent
+  m_Name: Drowning_WeirdEvent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,3 +44,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 050b6c3f509aaf24b94b497672c709c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Assets.KDH.Scripts.WeirdEvents.Instances.Test3WeirdEvent
+  EventAreaType: 1
