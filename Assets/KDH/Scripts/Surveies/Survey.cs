@@ -1,5 +1,6 @@
 using KDH.Scripts.Rooms;
 using KDH.Scripts.Systems;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,6 +14,8 @@ namespace KDH.Scripts.Surveies
         [SerializeField] private GameManager _gameManager;
 
         public bool HasCompletedSurvey { get; private set; }
+        public int CompletedSurveyCount { get; private set; }
+        public event Action OnSurveyCompleted;
         [field: SerializeField] public int WarningCount { get; private set; } = 0;
         public bool IsDead { get; private set; }
 
@@ -168,6 +171,7 @@ namespace KDH.Scripts.Surveies
         {
             HasCompletedSurvey = false;
             _currentSurveyIndex = 0;
+            CompletedSurveyCount = 0;
 
             if (_gameManager.CurrentDay >= _gameManager.DailySurveyList.Length)
             {
@@ -181,6 +185,12 @@ namespace KDH.Scripts.Surveies
 
         public void InitSurveyQuiz()
         {
+            if (_currentSurveyIndex > 0)
+            {
+                CompletedSurveyCount = _currentSurveyIndex;
+                OnSurveyCompleted?.Invoke();
+            }
+
             if (_currentSurveyIndex >= _gameManager.TodaySurveies.list.Count ||
                 _gameManager.CurrentDay >= _gameManager.DailySurveyList.Length)
             {

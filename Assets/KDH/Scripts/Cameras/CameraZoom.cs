@@ -18,6 +18,8 @@ namespace KDH.Scripts.Cameras
 
         private bool _isRunning;
         public bool IsRunning => _isRunning;
+        private bool _zooming;
+        public bool Zooming => _zooming;
 
         public async UniTask CameraZoomIn()
         {
@@ -27,6 +29,7 @@ namespace KDH.Scripts.Cameras
             }
 
             _isRunning = true;
+            _zooming = true;
 
             try
             {
@@ -54,6 +57,7 @@ namespace KDH.Scripts.Cameras
             }
 
             _isRunning = true;
+            _zooming = false;
 
             try
             {
