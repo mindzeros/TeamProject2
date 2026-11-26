@@ -1,10 +1,9 @@
 using UnityEngine;
-using UnityEngine.UI;
 using Yarn.Unity;
 
 public class PortraitPresenter : DialoguePresenterBase
 {
-    [SerializeField] private Image portraitImage;
+    [SerializeField] private SpriteRenderer portraitImage;
     [SerializeField] private CharacterPortraits[] characters;
 
     private CharacterPortraits currentSpeaker;

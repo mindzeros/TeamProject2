@@ -1,20 +1,20 @@
 ﻿namespace KDH.Scripts.Mails
 {
-    internal class MailOutlineDrawer : OutlineDrawer
+    internal class ObjectOutlineDrawer : OutlineDrawer
     {
         private void OnEnable()
         {
-            _spriteRenderer.material = defaultMaterial;
+            spriteRenderer.material = defaultMaterial;
         }
 
         protected override void OnMouseEnter()
         {
-            _spriteRenderer.material = OutlineMaterial;
+            spriteRenderer.material = OutlineMaterial;
         }
 
         protected override void OnMouseExit()
         {
-            _spriteRenderer.material = defaultMaterial;
+            spriteRenderer.material = defaultMaterial;
         }
     }
 }
