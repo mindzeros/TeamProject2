@@ -1,6 +1,7 @@
 ﻿using KDH.Scripts.Systems;
 using System.Collections;
 using UnityEngine;
+using UnityPipeline.Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace KDH.Scripts.Rooms
 {
@@ -11,17 +12,29 @@ namespace KDH.Scripts.Rooms
         private readonly int _hashOpenCurtain = Animator.StringToHash("Open");
         private readonly int _hashCloseCurtain = Animator.StringToHash("Close");
         private readonly int _hashKid = Animator.StringToHash("Kid");
-        private readonly int _hashDrowning = Animator.StringToHash("Drowning");
-        private readonly int _hashIdle = Animator.StringToHash("Idle");
+        private readonly int _hashDrowning = Animator.StringToHash("Drowning"); 
         internal static bool S_Drowning;
         internal static bool S_Kid;
         public static bool IsRunning { get; internal set; }
 
         private bool _openState;
 
+        private void OnEnable()
+        {
+            SetVisual();
+        }
+
         public void SetVisual()
         {
             // TODO
+            if (S_Kid)
+            {
+                animController.AnimationTrigger(_hashKid);
+            }
+            else if (S_Drowning)
+            {
+                animController.AnimationTrigger(_hashDrowning);
+            }
         }
 
         internal IEnumerator SetAnim()
