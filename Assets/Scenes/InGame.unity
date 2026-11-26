@@ -854,6 +854,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::KDH.Scripts.Mails.MailOutlineDrawer
   OutlineMaterial: {fileID: 2100000, guid: b1ab6bd16d71bd642b51e5fa8fb7ccf7, type: 2}
   defaultMaterial: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  spriteRenderer: {fileID: 604852018}
 --- !u!1001 &77524806
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1196,10 +1197,34 @@ MonoBehaviour:
       m_Calls: []
   onDialogueStart:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1853194190}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onDialogueComplete:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1853194190}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   onUnhandledCommand:
     m_PersistentCalls:
       m_Calls: []
@@ -4929,7 +4954,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 462455434}
-  - component: {fileID: 462455436}
+  - component: {fileID: 462455435}
   m_Layer: 5
   m_Name: BedHotspot (1)
   m_TagString: Untagged
@@ -4956,7 +4981,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0.05, y: -0.25}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!61 &462455436
+--- !u!61 &462455435
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4990,7 +5015,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -2.5}
+  m_Offset: {x: 0, y: -3}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -5000,7 +5025,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 13, y: 5}
+  m_Size: {x: 13, y: 2.5}
   m_EdgeRadius: 0
 --- !u!1 &472747601
 GameObject:
@@ -13918,7 +13943,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -18126,6 +18151,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::KDH.Scripts.Notebooks.NotebookOutlineDraw
   OutlineMaterial: {fileID: 2100000, guid: b1ab6bd16d71bd642b51e5fa8fb7ccf7, type: 2}
   defaultMaterial: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  spriteRenderer: {fileID: 612950301}
   cameraZoom: {fileID: 638242752}
 --- !u!1001 &1498669826
 PrefabInstance:
@@ -18403,8 +18429,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1501154184}
-  - component: {fileID: 1501154186}
   - component: {fileID: 1501154185}
+  - component: {fileID: 1501154186}
   m_Layer: 0
   m_Name: Bedding Background
   m_TagString: Untagged
@@ -18990,7 +19016,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1566405401}
-  - component: {fileID: 1566405403}
+  - component: {fileID: 1566405405}
   - component: {fileID: 1566405404}
   m_Layer: 5
   m_Name: BedHotspot
@@ -19018,7 +19044,36 @@ RectTransform:
   m_AnchoredPosition: {x: 0.05, y: -0.25}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!61 &1566405403
+--- !u!114 &1566405404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1566405400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6dc12f027168ff428a6fef1e17668f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BedClickHotspot
+  onClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1894248268}
+        m_TargetAssemblyTypeName: KDH.Scripts.Systems.GameManager, Assembly-CSharp
+        m_MethodName: ContinueNextDay
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  blackground: {fileID: 837855540}
+  bedding: {fileID: 1501154183}
+--- !u!61 &1566405405
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -19052,7 +19107,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -2.5}
+  m_Offset: {x: 0, y: -3}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -19062,37 +19117,8 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 13, y: 5}
+  m_Size: {x: 13, y: 2.5}
   m_EdgeRadius: 0
---- !u!114 &1566405404
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1566405400}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c6dc12f027168ff428a6fef1e17668f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BedClickHotspot
-  onClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1894248268}
-        m_TargetAssemblyTypeName: KDH.Scripts.Systems.GameManager, Assembly-CSharp
-        m_MethodName: ContinueNextDay
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  blackground: {fileID: 837855540}
-  bedding: {fileID: 1501154183}
 --- !u!1 &1567622859
 GameObject:
   m_ObjectHideFlags: 0
