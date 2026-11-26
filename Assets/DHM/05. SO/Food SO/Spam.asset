@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemSO
   itemID: Spam
   itemName: "\uC2A4\uD338"
-  icon: {fileID: 0}
+  icon: {fileID: -2929974670747249912, guid: d5d1d7149d0a65a469df309b2c56b55f, type: 3}
   description: "\uC5B4\uC6B0 \uAE30\uB984\uC838"
   cost: 5
-  recoveryType: 0
+  type: 0
   hungerAmount: 5.5
   thirstAmount: 0
   specialEvent: 0
