@@ -10,5 +10,6 @@ namespace KDH.Scripts.Systems
         [field: SerializeField] public NextDayFadeInOutUI NextDayFadeInOutUI { get; private set; }
         [field: SerializeField] public UpdateCreditText CreditText { get; private set; }
         [field: SerializeField] public HealthText HealthText { get; private set; }
+        [field: SerializeField] public InventoryUI InventoryUI { get; private set; }
     }
 }

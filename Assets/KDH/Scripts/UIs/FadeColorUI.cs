@@ -16,7 +16,7 @@ namespace KDH.Scripts.UIs
 
         public void Show()
         {
-            image.DOKill();          // 진행 중인 트윈 정리
+            image.DOKill();
             image.color = Color.white;
         }
 
