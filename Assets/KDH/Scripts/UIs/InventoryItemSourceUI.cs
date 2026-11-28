@@ -29,6 +29,7 @@ namespace Assets.KDH.Scripts.UIs
         private void SetCurrentItem()
         {
             InventoryUI.CurrentItem = ItemData;
+            InventoryUI.OnCurrentItemChanged?.Invoke();
         }
     }
 }

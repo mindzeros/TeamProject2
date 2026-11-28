@@ -10,7 +10,7 @@ namespace KDH.Scripts
     {
         [SerializeField] private UIManager _uiManager;
         
-        private int _credit;
+        [SerializeField] private int _credit;
 
         public int Credit
         {
@@ -98,9 +98,19 @@ namespace KDH.Scripts
             OnItemAmountChanged?.Invoke();
         }
 
-        public void UseItem(ItemSO item, int count)
+        public void UseItem(CharacterStats target, ItemSO item, int count)
         {
+            if (!GameManager.Instance.UIManager.InventoryUI.ExceptionMessage()) return;
+
             _itemDict[item] -= count;
+            DHM.GameManager.Instance.UseItemOnCharacter(item, target);
+
+            if (_itemDict[item] <= 0)
+            {
+                GameManager.Instance.UIManager.InventoryUI.RemoveCurrentItem();
+                _itemDict.Remove(item);
+            }
+
             OnItemAmountChanged?.Invoke();
         }
 

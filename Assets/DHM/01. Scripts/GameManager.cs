@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 namespace DHM
 {
@@ -10,10 +9,8 @@ namespace DHM
         public static GameManager Instance;
 
         [Header("생존자 정보")]
-        public CharacterStats player = new CharacterStats { characterName = "백우빈", hungerDecreasePerDay = 2.5f, thirstDecreasePerDay = 1.5f };
-        public CharacterStats sister = new CharacterStats { characterName = "백하연", hungerDecreasePerDay = 2.0f, thirstDecreasePerDay = 1.0f };
-
-        private int currentDay = 1;
+        [field: SerializeField] public CharacterStats Player { get; private set; }
+        [field: SerializeField] public CharacterStats Sister { get; private set; }
 
         [Header("플레이어 UI")]
         public TextMeshProUGUI playerHungerText;
@@ -23,16 +20,10 @@ namespace DHM
         public TextMeshProUGUI sisterHungerText;
         public TextMeshProUGUI sisterThirstText;
 
-        [Header("일차 카운트 UI")]
-        public TextMeshProUGUI DayText;
-
         private Dictionary<string, int> itemUseCounts = new Dictionary<string, int>();
 
         [Header("설정")]
         [SerializeField] private int hiddenEndingThreshold = 20;
-
-        [Header("테스트 아이템 설정")]
-        public ItemSO testItem;
 
         private void Awake()
         {
@@ -42,50 +33,19 @@ namespace DHM
 
         private void Start()
         {
-            player.Init();
-            sister.Init();
+            Player.Init();
+            Sister.Init();
 
-            if (DayText != null) DayText.text = $"{currentDay}일차";
             UpdateAllUI();
-        }
-
-        private void Update()
-        {
-            if (Keyboard.current.qKey.wasPressedThisFrame)
-            {
-                if (testItem != null)
-                {
-                    UseItemOnCharacter(testItem, player);
-                }
-                else
-                {
-                    Debug.LogWarning("GameManager에 테스트 아이템이 연결되지 않았습니다!");
-                }
-            }
-
-            if (Keyboard.current.eKey.wasPressedThisFrame)
-            {
-                if (testItem != null)
-                {
-                    UseItemOnCharacter(testItem, sister);
-                }
-                else
-                {
-                    Debug.LogWarning("GameManager에 테스트 아이템이 연결되지 않았습니다!");
-                }
-            }
         }
 
         public void OnClickNextDayButton()
         {
-            currentDay++;
-            if (DayText != null) DayText.text = $"{currentDay}일차";
+            Player.PassDay();
+            CheckDeath(Player);
 
-            player.PassDay();
-            CheckDeath(player);
-
-            sister.PassDay();
-            CheckDeath(sister);
+            Sister.PassDay();
+            CheckDeath(Sister);
 
             UpdateAllUI();
         }
@@ -137,11 +97,11 @@ namespace DHM
 
         private void UpdateAllUI()
         {
-            if (playerHungerText != null) playerHungerText.text = $"남은 허기: {player.currentHunger} / {player.maxHunger}";
-            if (playerThirstText != null) playerThirstText.text = $"남은 갈증: {player.currentThirst} / {player.maxThirst}";
+            if (playerHungerText != null) playerHungerText.text = $"{Player.currentHunger} / {Player.maxHunger}";
+            if (playerThirstText != null) playerThirstText.text = $"{Player.currentThirst} / {Player.maxThirst}";
 
-            if (sisterHungerText != null) sisterHungerText.text = $"남은 허기: {sister.currentHunger} / {sister.maxHunger}";
-            if (sisterThirstText != null) sisterThirstText.text = $"남은 갈증: {sister.currentThirst} / {sister.maxThirst}";
+            if (sisterHungerText != null) sisterHungerText.text = $"{Sister.currentHunger} / {Sister.maxHunger}";
+            if (sisterThirstText != null) sisterThirstText.text = $"{Sister.currentThirst} / {Sister.maxThirst}";
         }
 
         private void CheckDeath(CharacterStats survivor)

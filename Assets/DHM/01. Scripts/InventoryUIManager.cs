@@ -104,10 +104,10 @@ namespace DHM
 
             if (playerHPText != null)
             {
-                float currentH = GameManager.Instance.player.currentHunger;
-                float currentT = GameManager.Instance.player.currentThirst;
-                float maxH = GameManager.Instance.player.maxHunger;
-                float maxT = GameManager.Instance.player.maxThirst;
+                float currentH = GameManager.Instance.Player.currentHunger;
+                float currentT = GameManager.Instance.Player.currentThirst;
+                float maxH = GameManager.Instance.Player.maxHunger;
+                float maxT = GameManager.Instance.Player.maxThirst;
 
                 float afterH = Mathf.Clamp(currentH + currentSelectedItem.hungerAmount, 0f, maxH);
                 float afterT = Mathf.Clamp(currentT + currentSelectedItem.thirstAmount, 0f, maxT);
@@ -116,10 +116,10 @@ namespace DHM
 
             if (sisterHPText != null)
             {
-                float currentH = GameManager.Instance.sister.currentHunger;
-                float currentT = GameManager.Instance.sister.currentThirst;
-                float maxH = GameManager.Instance.sister.maxHunger;
-                float maxT = GameManager.Instance.sister.maxThirst;
+                float currentH = GameManager.Instance.Sister.currentHunger;
+                float currentT = GameManager.Instance.Sister.currentThirst;
+                float maxH = GameManager.Instance.Sister.maxHunger;
+                float maxT = GameManager.Instance.Sister.maxThirst;
 
                 float afterH = Mathf.Clamp(currentH + currentSelectedItem.hungerAmount, 0f, maxH);
                 float afterT = Mathf.Clamp(currentT + currentSelectedItem.thirstAmount, 0f, maxT);
@@ -129,12 +129,12 @@ namespace DHM
 
         public void OnClickFeedPlayer()
         {
-            UseItemOnTarget(GameManager.Instance.player);
+            UseItemOnTarget(GameManager.Instance.Player);
         }
 
         public void OnClickFeedSister()
         {
-            UseItemOnTarget(GameManager.Instance.sister);
+            UseItemOnTarget(GameManager.Instance.Sister);
         }
 
         private void UseItemOnTarget(CharacterStats target)

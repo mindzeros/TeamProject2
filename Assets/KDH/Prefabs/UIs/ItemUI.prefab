@@ -794,6 +794,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52b62b56b2f23f84ca124b43d1784a01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::KDH.Scripts.Item.ItemSOHandler
+  panel: {fileID: 1607785422109646866}
+  costPanel: {fileID: 0}
+  amountPanel: {fileID: 2503429383444271767}
+  purChaseBtn: {fileID: 2213019445536260032}
   _amount: {fileID: 4168379700981349515}
   _cost: {fileID: 7237775986275735303}
   _icon: {fileID: 6645199653875181294}
