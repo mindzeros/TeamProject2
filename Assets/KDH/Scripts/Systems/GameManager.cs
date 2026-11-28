@@ -1,3 +1,4 @@
+using DHM;
 using KDH.Scripts.Mails;
 using KDH.Scripts.Stores;
 using KDH.Scripts.Surveies;
@@ -13,12 +14,13 @@ namespace KDH.Scripts.Systems
 
         [Header("Settings")]
         public SurveyQuizSO CurrentSurvey { get; set; }
-        public int CurrentDay { get; private set; }
+        [field: SerializeField] public int CurrentDay { get; private set; }
 
         [Header("Data")]
         [field: SerializeField] public DailySurveyListSO[] DailySurveyList { get; private set; }
         public DailySurveyListSO TodaySurveies { get; set; }
         [Header("Modules")]
+        [field: SerializeField] public DHM.GameManager DHM_gameManager { get; private set; }
         [field: SerializeField] public WeirdEventManager WeirdEventManager { get; private set; }
         [field: SerializeField] public ResourceManager Resources { get; private set; }
         [field: SerializeField] public UIManager UIManager { get; private set; }
@@ -74,6 +76,7 @@ namespace KDH.Scripts.Systems
             Survey.ResetTodaySurvey();
             Survey.InitSurveyQuiz();
             Store.ResetItems();
+            DHM_gameManager.OnClickNextDayButton();
 
             if (Survey.IsDead)
             {

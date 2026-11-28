@@ -9,6 +9,7 @@ namespace KDH.Scripts.UIs
     {
         [SerializeField] private RoomViewController roomViewController;
         [SerializeField] private TextMeshProUGUI _message;
+        [SerializeField] private TextMeshProUGUI dayText;
 
         public override void Fade(float fadeInTime, float fadeOutTime, float relateTime)
         {
@@ -25,6 +26,7 @@ namespace KDH.Scripts.UIs
             _message.gameObject.SetActive(true);
             
             _message.SetText(message);
+            dayText.SetText(message);
             _message.color = new Color(color.r, color.g, color.b, 0);
 
             seq.Append(_targetRect.DOFade(1, fadeInTime).SetEase(Ease.Linear));

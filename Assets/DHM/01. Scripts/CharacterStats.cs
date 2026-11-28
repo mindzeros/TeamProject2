@@ -1,7 +1,6 @@
 using UnityEngine;
 
-[System.Serializable]
-public class CharacterStats
+public class CharacterStats : MonoBehaviour
 {
     public string characterName;
 

@@ -10,7 +10,7 @@ namespace KDH.Scripts
     {
         [SerializeField] private UIManager _uiManager;
         
-        private int _credit;
+        [SerializeField] private int _credit;
 
         public int Credit
         {
@@ -41,12 +41,17 @@ namespace KDH.Scripts
         private readonly Dictionary<ItemSO, int> _itemDict = new();
         private readonly Dictionary<ItemSO, int> _mailItemDict = new();
         private readonly Dictionary<ItemSO, int> _delieryItemDict = new();
+        public IReadOnlyDictionary<ItemSO, int> ItemDict => _itemDict;
+        public IReadOnlyDictionary<ItemSO, int> MailItemDict => _mailItemDict;
         public IReadOnlyDictionary<ItemSO, int> DeliveryItemDict => _delieryItemDict;
+
+        public event Action OnItemAmountChanged;
 
         private void Start()
         {
             OnCreditChange += _uiManager.CreditText.SetCreditText;
             OnChangeLife += _uiManager.HealthText.ChangeHealthText;
+            OnItemAmountChanged += _uiManager.InventoryUI.SetInventory;
 
             OnCreditChange?.Invoke(Credit);
             OnChangeLife?.Invoke(Life);
@@ -67,6 +72,7 @@ namespace KDH.Scripts
         {
             OnCreditChange -= _uiManager.CreditText.SetCreditText;
             OnChangeLife -= _uiManager.HealthText.ChangeHealthText;
+            OnItemAmountChanged -= _uiManager.InventoryUI.SetInventory;
         }
 
         public void AddDeliveryItem(ItemSO item, int count) // 주문
@@ -89,6 +95,23 @@ namespace KDH.Scripts
         public void GetItem(ItemSO item, int count) // 즉시 아이템을 획득
         {
             _itemDict.TryAdd(item, count);
+            OnItemAmountChanged?.Invoke();
+        }
+
+        public void UseItem(CharacterStats target, ItemSO item, int count)
+        {
+            if (!GameManager.Instance.UIManager.InventoryUI.ExceptionMessage()) return;
+
+            _itemDict[item] -= count;
+            DHM.GameManager.Instance.UseItemOnCharacter(item, target);
+
+            if (_itemDict[item] <= 0)
+            {
+                GameManager.Instance.UIManager.InventoryUI.RemoveCurrentItem();
+                _itemDict.Remove(item);
+            }
+
+            OnItemAmountChanged?.Invoke();
         }
 
         public void GetCredit(int amount)
@@ -121,6 +144,11 @@ namespace KDH.Scripts
         public void ClearDeliveryDict()
         {
             _delieryItemDict.Clear();
+        }
+
+        public void ClearMailDict()
+        {
+            _mailItemDict.Clear();
         }
     }
 }

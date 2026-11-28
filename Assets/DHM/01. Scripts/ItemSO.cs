@@ -24,6 +24,7 @@ public class ItemSO : ScriptableObject
     public Sprite icon;
     [TextArea] public string description;
     public int cost;
+    [Min(1)] public int amountMaxRange;
 
     [Header("회복 설정")]
     public Type type;

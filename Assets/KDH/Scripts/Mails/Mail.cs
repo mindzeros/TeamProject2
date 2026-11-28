@@ -45,13 +45,13 @@ namespace KDH.Scripts.Mails
                 Destroy(_contentTrm.GetChild(i).gameObject);
             }
 
-            foreach (var item in _resourceManager.DeliveryItemDict)
+            foreach (var item in _resourceManager.MailItemDict)
             {
                 _resourceManager.GetItem(item.Key, item.Value);
             }
 
             MailBoxController.MailMainText.SetText(nullItemText);
-            _resourceManager.ClearDeliveryDict();
+            _resourceManager.ClearMailDict();
         }
     }
 }
