@@ -9,22 +9,22 @@ namespace KDH.Scripts.Notebooks
         
         private void OnEnable()
         {
-            _spriteRenderer.material = defaultMaterial;
+            spriteRenderer.material = defaultMaterial;
         }
 
         protected override void OnMouseEnter()
         {
             if (!cameraZoom.Zooming)
             {
-                _spriteRenderer.material = OutlineMaterial;
+                spriteRenderer.material = OutlineMaterial;
             }
         }
 
         private void OnMouseOver()
         {
-            if (_spriteRenderer.material != defaultMaterial && cameraZoom.Zooming)
+            if (spriteRenderer.material != defaultMaterial && cameraZoom.Zooming)
             {
-                _spriteRenderer.material = defaultMaterial;
+                spriteRenderer.material = defaultMaterial;
             }
         }
 
@@ -32,7 +32,7 @@ namespace KDH.Scripts.Notebooks
         {
             if (!cameraZoom.Zooming)
             {
-                _spriteRenderer.material = defaultMaterial;
+                spriteRenderer.material = defaultMaterial;
             }
         }
     }
