@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Day 10
   m_EditorClassIdentifier: Assembly-CSharp::DailySurveyListSO
   damage: 1
-  weridEvent: {fileID: 0}
+  weridEvent: {fileID: 8629249814839911926, guid: 5db0cd7611f83e649a0349b47d9d93e7, type: 3}
   list:
   - {fileID: 11400000, guid: a68a1c508c173704e9df356773891ad2, type: 2}
   - {fileID: 11400000, guid: c5736d76a4eb6fb44867ef8a4930fdab, type: 2}

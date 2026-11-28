@@ -1,17 +1,18 @@
-﻿using System;
+﻿using KDH.Scripts.Rooms;
 
 namespace KDH.Scripts.WeirdEvents
 {
     internal class Apocalypse_WeirdEvent : AbstractWeirdEvent
     {
-        public override void OnEndEvent()
-        {
-            throw new NotImplementedException();
-        }
-
         public override void OnStartEvent()
         {
-            throw new NotImplementedException();
+            CurtainRoom.S_Apocalypse = true;
+        }
+
+        public override void OnEndEvent()
+        {
+            CurtainRoom.S_Apocalypse = false;
+            CurtainRoom.IsRunning = false;
         }
     }
 }
